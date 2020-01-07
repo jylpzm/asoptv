@@ -25,8 +25,16 @@ class Profile extends Model
     	$user = Auth::user();
     	// $displayphoto_path = $request->file('avatar')->store('avatar');
 
-        $user->avatar = $request->file('avatar')->store('avatars');
+        $user->avatar = $request->file('avatar')->store('public/avatars');
     	$user->save();
 
+    }
+
+    public function updateProfilePic($request){
+        $user = Auth::user();
+        // $displayphoto_path = $request->file('avatar')->store('avatar');
+        $request->file('avatar')->store('public/avatars');
+        $user->avatar = $request->file('avatar')->hashName();
+        $user->save();
     }
 }

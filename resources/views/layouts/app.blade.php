@@ -27,7 +27,7 @@
        <div class="side-nav-wrapper">
                     <div class="sidebar-profile">
                         <div class="sidebar-profile-image">
-                            <img src="/public/{{ Auth::user()->avatar }}" class="img-fluid rounded-circle text-center" alt="">
+                            <img src="{{ !empty(Auth::user()->avatar) ? url("/storage/avatars/".Auth::user()->avatar) : url("/images/default.jpg") }}" class="img-fluid rounded-circle text-center" alt="">
                         </div>
                         <div class="sidebar-profile-info">
                         </div>
@@ -175,7 +175,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{  Auth::user()->first_name  }}</span>
-                <img class="img-profile rounded-circle" src="{{ asset(Auth::user()->avatar) }}">
+                <img class="img-profile rounded-circle" src="{{ !empty(Auth::user()->avatar) ? url("/storage/avatars/".Auth::user()->avatar) : url("/images/default.jpg") }}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

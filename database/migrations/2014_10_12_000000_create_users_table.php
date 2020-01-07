@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('occupation')->nullable();
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();
-            $table->string('avatar')->default('https://www.medaid.co.uk/wp-content/uploads/2019/04/default.jpg');
+            $table->string('avatar')->nullable();
             $table->integer('age')->nullable();
             $table->string('country')->nullable();
             $table->string('region')->nullable();

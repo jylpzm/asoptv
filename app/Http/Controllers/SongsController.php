@@ -18,7 +18,7 @@ class SongsController extends Controller
 
 		$validator = validator::make($request->all(),[
 			'audio_file' => 'required|mimes:audio/mp3',
-			'audio_file' => 'required|mimes:mp3,mpga',
+			'audio_file' => 'required|mimes:mp3,mpga|max:1000',
 			'lyrics_file' => 'required|mimes:doc,docx',
 		]);
 

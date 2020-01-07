@@ -73,9 +73,8 @@
                   <div class="col-sm-6">
                     <label for="gender">Gender:</label><br>
                     <select name="gender" class="custom-select">
-                      <option value=""></option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
                     </select>
                   </div>
                 </div>
@@ -102,8 +101,8 @@
                    </option>
                    @endforeach
                  </select>
-
-                 <select hidden="" class="form-control slcState" name="state" id="state" required="">
+                  
+                 <select hidden="" class="form-control slcState" name="province" id="state" required="">
                  </select>
 
                  <select hidden="" class="form-control slcCity" name="city" id="city" required="">

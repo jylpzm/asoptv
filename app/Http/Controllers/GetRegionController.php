@@ -13,16 +13,9 @@ class GetRegionController extends Controller
      public function getRegion()
     {
         $phregions= PhilippineRegion::all();
-        return view('profile', compact('phregions'));
-        
-    }
-     public function getRegionRegister()
-    {
-        $phregions= PhilippineRegion::all();
-        return view('Auth/register', compact('phregions'));
-        
-    }
+        return view('auth/register', compact('phregions'));
 
+    }
 //For fetching states
     public function getStates($id)
     {
@@ -43,7 +36,6 @@ class GetRegionController extends Controller
     }
 
     public function index(){
-        $phregions= PhilippineRegion::all();
-        return view('auth/register', compact('phregions'));
+
     }
 }

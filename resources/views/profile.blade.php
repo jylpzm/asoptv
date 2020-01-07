@@ -30,51 +30,66 @@
 
 <hr>
 <div class="container bootstrap snippet">
-    <div class="row">
+    <div class="form-group row">
       <div class="col-sm-10"><h1>{{ Auth::user()->user_id }}</h1></div>
     </div>
+<button class="btn btn-primary" type="submit" id="editBtn">edit</button>
     <div class="row">
-      <div class="col-sm-3"><!--left col-->
+         <div class="col-sm-3"><!--left col-->
+              <div class="text-center">
+
+        <form method="POST" action="{{ route('changeDP') }}" enctype="multipart/form-data">
+          @csrf
+          <img src="{{ !empty(Auth::user()->avatar) ? url("/storage/avatars/".Auth::user()->avatar) : url("/images/default.jpg") }}" class="avatar img-circle img-thumbnail" alt="avatar">
+          <h6>Upload your 2x2 picture here!</h6>
+            <input type="file" class="text-center center-block file-upload" name="avatar">
+          <div class="col-sm-20 mb-3 mb-sm-0">
+            <br>
+            <div class="col-sm-6">
+              <button class="btn btn-xs btn-success" type="submit">SaveProfile</button>
+            </div>
+          </div>
+            </div></hr><br>
+        </form>
 
     <form method="POST" action="/updateprofile/{{ Auth::user()->id }}" enctype="multipart/form-data">
           @csrf
-    <div class="text-center">
-        <img src="{{ asset(Auth::user()->avatar) }}" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6>Upload your 2x2 picture here!</h6>
-        <input type="file" class="text-center center-block file-upload" name="avatar">
-      </div></hr><br>
+
         </div><!--/col-3-->
       <div class="col-sm-9">
+
         <div class="form-group row">
+
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="firstname">First Name</label><br>
-                    <input type="text" class="form-control form-control-user" id="exampleFirstName" value="{{ Auth::user()->first_name }}">
+                    <input id="firstname" type="text" class="form-control form-control-user" value="{{ Auth::user()->first_name }}" disabled="">
                   </div>
                   <div class="col-sm-6">
                     <label for="lastname">Last Name</label><br>
-                    <input type="text" class="form-control form-control-user" id="exampleLastName">
+                    <input id="lastname" type="text" class="form-control form-control-user" value="{{ Auth::user()->last_name }}" disabled="">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="email">Email Address</label><br>
-                    <input type="text" class="form-control form-control-user" id="email" value="{{ Auth::user()->email }}" disabled="">
+                    <input type="text" class="form-control form-control-user" id="email" value="{{ Auth::user()->email }}" disabled="" readonly="readonly">
                   </div>
                   <div class="col-sm-6">
                     <label for="phonenumber">Phone Number</label><br>
-                    <input type="text" class="form-control form-control-user" id="contact_num">
+                    <input type="text" class="form-control form-control-user" id="contact_num" disabled="" placeholder="Put Your Contact Number Here">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="birthdate">Birthdate:</label>
-                    <input id="birthdate" name="dob" type="date" class="form-control datepicker" autocomplete="off" >
+                    <input id="birthdate" name="dob" type="date" class="form-control datepicker" autocomplete="off" value="{{ Auth::user()->dob }}" disabled="">
                   </div>
                   <div class="col-sm-6">
                     <label for="gender">Gender:</label><br>
-                    <select class="custom-select">
+                    <select id="gender" class="custom-select" disabled="">
+                      <option value="">{{ Auth::user()->gender }}</option>
                       <option value="1">Male</option>
                       <option value="2">Female</option>
                     </select>
@@ -82,29 +97,24 @@
                 </div>
                 <div class="form-group">
                   <label for="street">Street Address</label><br>
-                    <input type="text" class="form-control form-control-user" id="street" placeholder="Put Your Complete Address here">
+                    <input id="streetadd" type="text" class="form-control form-control-user" name="street" placeholder="Put Your Complete Address here" disabled="">
                 </div>
                 <div>
-                  <select class="form-control" name="phregion" id="phregion">
-                    <option value="">Select Region</option>
-                 
-                    @foreach ($phregions as $phregion) 
-                    <option value="{{$phregion->region_code}}">
-                     {{ $phregion->region_description }}
-                   </option>
-                   @endforeach
+                  <select class="form-control" name="phregion" id="phregion" disabled="">
+                    <option value="">{{ Auth::user()->province }}</option>
                  </select>
 
-                 <select class="form-control slcState" name="state" id="state">
+                 <select class="form-control slcState" name="state" id="state" disabled="">
                  </select>
-                 <select class="form-control slcCity" name="city" id="city">
+                 <select class="form-control slcCity" name="city" id="city" disabled="">
                  </select>
                </div><br/>
                 </a>
                 <div class="form-group">
                  <div class="col-xs-12">
                   <br>
-                  <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                  <button class="btn btn-lg btn-success" type="submit" id="saveBtn" hidden=""><i class="glyphicon glyphicon-ok-sign"></i> Save</button> 
+                  <button class="btn btn-lg btn" type="button" id="cancelBtn" hidden=""><i class="glyphicon glyphicon-ok-sign"></i> Cancel</button>
                 </div>
               </div>
               </form>
@@ -135,58 +145,34 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-    
-
     $(".file-upload").on('change', function(){
         readURL(this);
     });
 });
-
-   $('#phregion').change(function(){
+ 
+ $(document).ready(function(){
+  $("#editBtn").click(function(){
     console.log('wew')
-    var cid = $(this).val();
-    if(cid){
-      $.ajax({
-        type:"get",
-        url:"/getStates/"+cid, 
-        success:function(res)
-        {       
-          if(res)
-          {
-            $('#state').attr('hidden', false)
-            $("#state").empty();
-            $("#city").empty();
-            $("#state").append('<option>Select Province</option>');
-            $.each(res,function(key,value){
-              $("#state").append('<option value="'+key+'">'+value+'</option>');
-            });
-          }
-        }
-
-      });
-    }
+    $('#firstname').attr('disabled', false)
+    $('#lastname').attr('disabled', false)
+    $('#contact_num').attr('disabled', false)
+    $('#gender').attr('disabled', false)
+    $('#birthdate').attr('disabled', false)
+    $('#streetadd').attr('disabled', false)
+    $('#saveBtn').attr('hidden', false)
+    $('#cancelBtn').attr('hidden', false)
   });
+  $("#cancelBtn").click(function(){
+    $('#firstname').attr('disabled', true)
+    $('#lastname').attr('disabled', true)
+    $('#contact_num').attr('disabled', true)
+    $('#gender').attr('disabled', true)
+    $('#birthdate').attr('disabled', true)
+    $('#streetadd').attr('disabled', true)
+    $('#saveBtn').attr('hidden', true)
+    $('#cancelBtn').attr('hidden', true)
 
-$('#state').change(function(){
-        var sid = $(this).val();
-        if(sid){
-            $.ajax({
-             type:"get",
-           url:"/getCities/"+sid, 
-           success:function(res)
-           {       
-            if(res)
-            {
-                $('#city').attr('hidden', false)
-                $("#city").empty();
-                $("#city").append('<option>Select City</option>');
-                $.each(res,function(key,value){
-                    $("#city").append('<option value="'+key+'">'+value+'</option>');
-                });
-            }
-        }
+  });
+});
 
-    });
-        }
-    }); 
 </script>

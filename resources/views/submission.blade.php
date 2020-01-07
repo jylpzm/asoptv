@@ -13,6 +13,7 @@
  	resize:none;
 
 }
+
 </style>
             @foreach($errors->all() as $error)
             <div class="alert alert-danger col-md-6 offset-md-3" role="alert">

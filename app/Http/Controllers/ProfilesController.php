@@ -32,21 +32,32 @@ class ProfilesController extends Controller
 
     public function editprofile(Request $request){
 
-       $validator = validator::make($request->all(),[
-        'avatar' => 'mimes:jpeg,jpg,png|required|max:8192',
-    ]);
+    //    $validator = validator::make($request->all(),[
+    //     'avatar' => 'mimes:jpeg,jpg,png|required|max:8192',
+    // ]);
 
-       if($validator->fails()){
-        return back()->withErrors($validator)->withInput();
+    //    if($validator->fails()){
+    //     return back()->withErrors($validator)->withInput();
         
-    }
-    $this->Profile->updateProfile($request);
-    return redirect("home")->with("message", "SUCCESSFULLY EDIT YOUR PROFILE");
+    // }
+    // $this->Profile->updateProfile($request);
+    // return redirect("home")->with("message", "SUCCESSFULLY EDIT YOUR PROFILE");
 
 }
 
 
+    public function editprofilePic(Request $request){
+        $validator = validator::make($request->all(),[
+            'avatar' => 'mimes:jpeg,jpg,png|required|max:8192',
+        ]);
 
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+
+        }
+        $this->Profile->updateProfilePic($request);
+        return redirect("home")->with("message", "SUCCESSFULLY EDIT YOUR PROFILE");
+    }
 
 //change pass
     public function changePassword(Request $request){

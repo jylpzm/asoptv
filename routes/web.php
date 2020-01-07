@@ -24,20 +24,21 @@ Route::get('/profile', 'ProfilesController@profile')->name('profile');
 Route::get('/settings', 'ProfilesController@settings')->name('settings');
 //edit profile
 Route::post('/updateprofile/{id}', 'ProfilesController@editprofile');
+Route::post('/profile', 'ProfilesController@editprofilePic')->name('changeDP');
 
 //change pass
 Route::post('/settings','ProfilesController@changePassword')->name('changePassword');
 
 
 //Get Region
-Route::get('/profile','GetRegionController@getRegion')->name('profile');
+Route::get('/register','GetRegionController@getRegion')->name('register');
 Route::get('/getStates/{id}','GetRegionController@getStates');
 Route::get('/getCities/{id}','GetRegionController@getCities');
 
 
 //register
-Route::post('/register', 'GetRegionController@index');
-Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+
+// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 //submission
 Route::get('/submit', 'SubmissionsController@index')->name('submission');
@@ -46,3 +47,5 @@ Route::get('/submissions', 'SubmissionsController@submissionhistory')->name('sub
 //submiting song
 Route::post('/submit_form', 'SongsController@submitsong');
 
+Route::get('file-upload', 'FileController@fileUpload');
+Route::post('file-upload', 'FileController@fileUploadPost')->name('fileUploadPost');
