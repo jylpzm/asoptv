@@ -27,13 +27,17 @@
   {{ $error }}
 </div>
 @endforeach
+@if (session('success'))
+<div class="alert alert-success">
+  {{ session('success') }}
+</div>
+@endif
 
 <hr>
 <div class="container bootstrap snippet">
     <div class="form-group row">
       <div class="col-sm-10"><h1>{{ Auth::user()->user_id }}</h1></div>
     </div>
-<button class="btn btn-primary" type="submit" id="editBtn">edit</button>
     <div class="row">
          <div class="col-sm-3"><!--left col-->
               <div class="text-center">
@@ -46,13 +50,13 @@
           <div class="col-sm-20 mb-3 mb-sm-0">
             <br>
             <div class="col-sm-6">
-              <button class="btn btn-xs btn-success" type="submit">SaveProfile</button>
+              <button class="btn btn-xs btn-success" type="submit">SaveProfilePicture</button>
             </div>
           </div>
             </div></hr><br>
         </form>
 
-    <form method="POST" action="/updateprofile/{{ Auth::user()->id }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('changeprofile') }}">
           @csrf
 
         </div><!--/col-3-->
@@ -62,11 +66,11 @@
 
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="firstname">First Name</label><br>
-                    <input id="firstname" type="text" class="form-control form-control-user" value="{{ Auth::user()->first_name }}" disabled="">
+                    <input name="first_name" id="firstname" type="text" class="form-control form-control-user" value="{{ Auth::user()->first_name }}" disabled="">
                   </div>
                   <div class="col-sm-6">
                     <label for="lastname">Last Name</label><br>
-                    <input id="lastname" type="text" class="form-control form-control-user" value="{{ Auth::user()->last_name }}" disabled="">
+                    <input name="last_name" id="lastname" type="text" class="form-control form-control-user" value="{{ Auth::user()->last_name }}" disabled="">
                   </div>
                 </div>
 
@@ -77,7 +81,7 @@
                   </div>
                   <div class="col-sm-6">
                     <label for="phonenumber">Phone Number</label><br>
-                    <input type="text" class="form-control form-control-user" id="contact_num" disabled="" placeholder="Put Your Contact Number Here">
+                    <input name="contact_num" type="text" class="form-control form-control-user" id="contact_num" disabled="" placeholder="Put Your Contact Number Here" value="{{ Auth::user()->contact_num }}" required="">
                   </div>
                 </div>
 
@@ -88,16 +92,16 @@
                   </div>
                   <div class="col-sm-6">
                     <label for="gender">Gender:</label><br>
-                    <select id="gender" class="custom-select" disabled="">
+                    <select name="gender" id="gender" class="custom-select" disabled="">
                       <option value="">{{ Auth::user()->gender }}</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="street">Street Address</label><br>
-                    <input id="streetadd" type="text" class="form-control form-control-user" name="street" placeholder="Put Your Complete Address here" disabled="">
+                    <input name="street_add" id="streetadd" type="text" class="form-control form-control-user"  placeholder="Put Your Complete Address here" disabled="" value="{{ Auth::user()->street_add }}">
                 </div>
                 <div>
                   <select class="form-control" name="phregion" id="phregion" disabled="">
@@ -112,9 +116,9 @@
                 </a>
                 <div class="form-group">
                  <div class="col-xs-12">
-                  <br>
                   <button class="btn btn-lg btn-success" type="submit" id="saveBtn" hidden=""><i class="glyphicon glyphicon-ok-sign"></i> Save</button> 
                   <button class="btn btn-lg btn" type="button" id="cancelBtn" hidden=""><i class="glyphicon glyphicon-ok-sign"></i> Cancel</button>
+                  <button class="btn btn-primary" type="button" id="editBtn">edit</button>
                 </div>
               </div>
               </form>
@@ -161,6 +165,7 @@
     $('#streetadd').attr('disabled', false)
     $('#saveBtn').attr('hidden', false)
     $('#cancelBtn').attr('hidden', false)
+    $('#editBtn').attr('hidden', true)
   });
   $("#cancelBtn").click(function(){
     $('#firstname').attr('disabled', true)
@@ -171,7 +176,7 @@
     $('#streetadd').attr('disabled', true)
     $('#saveBtn').attr('hidden', true)
     $('#cancelBtn').attr('hidden', true)
-
+    $('#editBtn').attr('hidden', false)
   });
 });
 

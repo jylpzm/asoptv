@@ -30,18 +30,18 @@ class ProfilesController extends Controller
     	return view('settings');
     }
 
-    public function editprofile(Request $request){
+    public function changeprofile(Request $request){
 
-    //    $validator = validator::make($request->all(),[
-    //     'avatar' => 'mimes:jpeg,jpg,png|required|max:8192',
-    // ]);
+       $validator = validator::make($request->all(),[
+        'contact_num' => 'required|min:10|max:20',
+    ]);
 
-    //    if($validator->fails()){
-    //     return back()->withErrors($validator)->withInput();
+       if($validator->fails()){
+        return back()->withErrors($validator)->withInput();
         
-    // }
-    // $this->Profile->updateProfile($request);
-    // return redirect("home")->with("message", "SUCCESSFULLY EDIT YOUR PROFILE");
+    }
+    $this->Profile->changeProfile($request);
+    return redirect()->back()->with("success","Profile Details changed successfully!");
 
 }
 
@@ -56,7 +56,7 @@ class ProfilesController extends Controller
 
         }
         $this->Profile->updateProfilePic($request);
-        return redirect("home")->with("message", "SUCCESSFULLY EDIT YOUR PROFILE");
+        return redirect()->back()->with("success","Profile Picture changed successfully!");
     }
 
 //change pass
@@ -83,7 +83,7 @@ class ProfilesController extends Controller
         // $user->password = bcrypt($request->get('new-password'));
         // $user->save();
 
-        return redirect()->back()->with("success","Password changed successfully !");
+        return redirect()->back()->with("success","Password changed successfully!");
 
     }
     

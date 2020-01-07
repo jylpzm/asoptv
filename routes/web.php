@@ -23,8 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfilesController@profile')->name('profile');
 Route::get('/settings', 'ProfilesController@settings')->name('settings');
 //edit profile
-Route::post('/updateprofile/{id}', 'ProfilesController@editprofile');
-Route::post('/profile', 'ProfilesController@editprofilePic')->name('changeDP');
+Route::post('/profilepicture', 'ProfilesController@editprofilePic')->name('changeDP');
 
 //change pass
 Route::post('/settings','ProfilesController@changePassword')->name('changePassword');
@@ -37,7 +36,7 @@ Route::get('/getCities/{id}','GetRegionController@getCities');
 
 
 //register
-
+Route::post('profile', 'ProfilesController@changeprofile')->name('changeprofile');
 // Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 //submission
@@ -46,6 +45,3 @@ Route::get('/submissions', 'SubmissionsController@submissionhistory')->name('sub
 
 //submiting song
 Route::post('/submit_form', 'SongsController@submitsong');
-
-Route::get('file-upload', 'FileController@fileUpload');
-Route::post('file-upload', 'FileController@fileUploadPost')->name('fileUploadPost');

@@ -8,9 +8,7 @@ use Hash;
 use Auth;
 class Profile extends Model
 {
-	protected $fillable =[
-		'avatar',
-	];
+	protected $fillable = ['user_id','first_name','last_name','avatar','dob','street_add', 'contact_num', ''];
 
     public function changepass($request){
 
@@ -20,12 +18,10 @@ class Profile extends Model
 
     }
 
-    public function updateProfile($request){
+    public function changeProfile($request){
 
     	$user = Auth::user();
-    	// $displayphoto_path = $request->file('avatar')->store('avatar');
-
-        $user->avatar = $request->file('avatar')->store('public/avatars');
+        $user->create($request->all());
     	$user->save();
 
     }
