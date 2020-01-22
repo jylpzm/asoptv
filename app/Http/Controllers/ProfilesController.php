@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Profile;
 use Auth;
 use Hash;
 use Validator;
-use App\Profile;
+
 
 class ProfilesController extends Controller
 {
@@ -36,10 +37,10 @@ class ProfilesController extends Controller
         'contact_num' => 'required|min:10|max:20',
     ]);
 
-       if($validator->fails()){
-        return back()->withErrors($validator)->withInput();
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
         
-    }
+        }
     $this->Profile->changeProfile($request);
     return redirect()->back()->with("success","Profile Details changed successfully!");
 

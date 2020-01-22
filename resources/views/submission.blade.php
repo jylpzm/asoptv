@@ -25,9 +25,10 @@
         
         <form action="submit_form" method="POST" enctype="multipart/form-data" >
         	@csrf
+          <input type="text" name="user_id" value="{{ Auth::user()->user_id }}" hidden="">
           <div class="form-group">
             <label for="title">Title of your entry</label>
-            <input name="song_title" class="form-control" id="" placeholder="Title of your entry" required="">
+            <input name="song_title" class="form-control" placeholder="Title of your entry" required="">
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect1">Favourite Platform</label>
@@ -57,7 +58,7 @@
           	</fieldset>
           </div>
           <br>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" S>Submit</button>
         </form>
     </div>
 @endsection
@@ -70,5 +71,11 @@ $(".custom-file-input").on("change", function() {
   var fileName = $(this).val().split("\\").pop();
   $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
+
+
+
+
+
+
 
 </script>

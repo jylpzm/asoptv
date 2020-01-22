@@ -25,8 +25,10 @@ class CreateSongsTable extends Migration
             $table->integer('isRead')->nullable();
             $table->integer('status')->nullable();
             $table->string('user_id')->nullable();
-            $table->timestamps();
+            $table->timestamps(); 
         });
+
+            
     }
 
     /**

@@ -21,8 +21,8 @@ class Profile extends Model
     public function changeProfile($request){
 
     	$user = Auth::user();
-        $user->create($request->all());
-    	$user->save();
+        $user->update($request->all());
+    	// $user->save();
 
     }
 

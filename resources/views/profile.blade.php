@@ -63,7 +63,7 @@
       <div class="col-sm-9">
 
         <div class="form-group row">
-
+                  <input type="text" name="user_id" value="{{ Auth::user()->user_id }}" hidden="">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="firstname">First Name</label><br>
                     <input name="first_name" id="firstname" type="text" class="form-control form-control-user" value="{{ Auth::user()->first_name }}" disabled="">
@@ -77,7 +77,7 @@
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="email">Email Address</label><br>
-                    <input type="text" class="form-control form-control-user" id="email" value="{{ Auth::user()->email }}" disabled="" readonly="readonly">
+                    <input class="form-control form-control-user" value="{{ Auth::user()->email }}" disabled="" readonly="readonly">
                   </div>
                   <div class="col-sm-6">
                     <label for="phonenumber">Phone Number</label><br>
@@ -121,6 +121,7 @@
                   <button class="btn btn-primary" type="button" id="editBtn">edit</button>
                 </div>
               </div>
+
               </form>
             </div>
           </div>

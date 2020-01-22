@@ -68,7 +68,12 @@
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="birthdate">Birthdate:</label>
-                    <input id="birthdate" name="dob" type="date" class="form-control datepicker" autocomplete="off" required="">
+                    <input id="birthdate" name="dob" type="date" class="form-control datepicker @error('dob') is-invalid @enderror" autocomplete="off" required="">
+                    @error('dob')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                   </div>
                   <div class="col-sm-6">
                     <label for="gender">Gender:</label><br>

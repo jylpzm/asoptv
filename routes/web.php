@@ -45,3 +45,4 @@ Route::get('/submissions', 'SubmissionsController@submissionhistory')->name('sub
 
 //submiting song
 Route::post('/submit_form', 'SongsController@submitsong');
+
