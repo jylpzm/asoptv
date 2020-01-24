@@ -42,7 +42,8 @@ Route::post('profile', 'ProfilesController@changeprofile')->name('changeprofile'
 //submission
 Route::get('/submit', 'SubmissionsController@index')->name('submission');
 Route::get('/submissions', 'SubmissionsController@submissionhistory')->name('subhistory');
-
+Route::get('/submissions', 'SubmissionsController@entries');
 //submiting song
 Route::post('/submit_form', 'SongsController@submitsong');
 
+//User-Submission Entries

@@ -18,7 +18,6 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>#</th>
                       <th>Song Title</th>
                       <th>Description</th>
                       <th>Posting Date</th>
@@ -27,8 +26,8 @@
                     </tr>
                   </thead>
                   <tfoot>
+  
                     <tr>
-                      <th>#</th>
                       <th>Song Title</th>
                       <th>Description</th>
                       <th>Posting Date</th>

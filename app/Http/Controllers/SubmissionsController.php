@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Submission;
+use DB;
 
 class SubmissionsController extends Controller
 {
@@ -23,11 +25,16 @@ class SubmissionsController extends Controller
          return view('submission')->renderSections()['content'];
     }
 
- return view('submission');
+        return view('submission');
 
    }
 
    public function submissionhistory(){
     return view('submissionhistory');
+   }
+
+   public function entries(){
+        $entries= Submission::all();
+        return view('submissionhistory', compact('songs'));
    }
 }

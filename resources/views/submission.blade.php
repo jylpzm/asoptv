@@ -27,7 +27,7 @@
         	@csrf
           <input type="text" name="user_id" value="{{ Auth::user()->user_id }}" hidden="">
           <div class="form-group">
-            <label for="title">Title of your entry</label>
+            <label for="title">Song Genre</label>
             <input name="song_title" class="form-control" placeholder="Title of your entry" required="">
           </div>
           <div class="form-group">
