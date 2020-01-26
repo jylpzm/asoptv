@@ -57,25 +57,51 @@
           		<textarea name="notes" cols="59" class="textarea" placeholder="Type your Message Here...." tabindex="5" required></textarea>
           	</fieldset>
           </div>
+             <div class="form-group{{ $errors->has('captcha') ? ' has-error' : '' }}">
+                      <label for="password" class="col-md-4 control-label">Captcha</label>
+
+
+                      <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="form-group col-md-4">
+                         <div class="captcha">
+                           <span>{!! captcha_img() !!}</span>
+                           <button type="button" class="btn btn-success" id="refresh"><i class="fa fa-refresh" id="refresh"></i></button>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                      <div class="col-md-4"></div>
+                      <div class="form-group col-md-4">
+                       <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha"></div>
+                     </div>
           <br>
           <button type="submit" class="btn btn-primary" S>Submit</button>
         </form>
     </div>
 @endsection
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
 
 <script type="text/javascript">
 $(".custom-file-input").on("change", function() {
+  console.log('sd')
   var fileName = $(this).val().split("\\").pop();
   $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
 
-
-
-
-
+$(document).ready(function() {
+  $('#refresh').click(function(){
+    console.log('s')
+    $.ajax({
+     type:'GET',
+     url:'refreshcaptcha',
+     success:function(data){
+      $(".captcha span").html(data.captcha);
+    }
+   });
+  });
+});
 
 
 </script>

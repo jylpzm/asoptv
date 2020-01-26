@@ -20,6 +20,7 @@ class SongsController extends Controller
 			'audio_file' => 'required|mimes:audio/mp3',
 			'audio_file' => 'required|mimes:mp3,mpga',
 			'lyrics_file' => 'required|mimes:doc,docx',
+			'captcha' => 'required|captcha'
 		]);
 
 		if($validator->fails()){
@@ -31,4 +32,9 @@ class SongsController extends Controller
 
 		return redirect("home")->with("message", "SUCCESSFULLY SUBMIT YOUR ENTRY");
 	}
+
+    public function refreshCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);
+    }
 }

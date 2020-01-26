@@ -139,6 +139,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        Mews\Captcha\CaptchaServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -190,7 +191,7 @@ return [
     */
 
     'aliases' => [
-        
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,

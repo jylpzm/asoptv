@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Submission;
+use App\Song;
 use DB;
 
 class SubmissionsController extends Controller
@@ -21,9 +22,6 @@ class SubmissionsController extends Controller
      */
       public function index(Request $request)
     {
-        if($request->ajax()) {
-         return view('submission')->renderSections()['content'];
-    }
 
         return view('submission');
 

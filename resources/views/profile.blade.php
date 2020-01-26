@@ -105,7 +105,7 @@
                 </div>
                 <div>
                   <select class="form-control" name="phregion" id="phregion" disabled="">
-                    <option value="">{{ Auth::user()->province }}</option>
+                    <option value="">{{ Auth::user()->region }}</option>
                  </select>
 
                  <select class="form-control slcState" name="state" id="state" disabled="">

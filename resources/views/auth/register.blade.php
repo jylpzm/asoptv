@@ -110,8 +110,6 @@
                  <select hidden="" class="form-control slcState" name="province" id="state" required="">
                  </select>
 
-                 <select hidden="" class="form-control slcCity" name="city" id="city" required="">
-                 </select>
                </div><br/>
                <button type="submit" class="btn btn-primary btn-user btn-block">
                 {{ __('Register') }}
@@ -160,7 +158,6 @@
           {
             $('#state').attr('hidden', false)
             $("#state").empty();
-            $("#city").empty();
             $("#state").append('<option>Select Province</option>');
             $.each(res,function(key,value){
               $("#state").append('<option value="'+key+'">'+value+'</option>');
@@ -172,26 +169,4 @@
     }
   });
 
-$('#state').change(function(){
-        var sid = $(this).val();
-        if(sid){
-            $.ajax({
-             type:"get",
-           url:"/getCities/"+sid, 
-           success:function(res)
-           {       
-            if(res)
-            {
-                $('#city').attr('hidden', false)
-                $("#city").empty();
-                $("#city").append('<option>Select City</option>');
-                $.each(res,function(key,value){
-                    $("#city").append('<option value="'+key+'">'+value+'</option>');
-                });
-            }
-        }
-
-    });
-        }
-    }); 
 </script>

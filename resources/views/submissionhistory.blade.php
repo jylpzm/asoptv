@@ -35,16 +35,16 @@
                       <th>Status</th>
                     </tr>
                   </tfoot>
+                  @foreach($entries as $entry)
                   <tbody>
                     <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
+                      <td>{{ $entry->song_title }}</td>
+                      <td>{{ $entry->notes }}</td>
+                      <td>{{ $entry->created_at }}</td>
+                      <td>{{ $entry->AdminRemark }}</td>
+                      <td>{{ $entry->status }}</td>
                     </tr>
-                    
+                  @endforeach  
                   </tbody>
                 </table>
               </div>
