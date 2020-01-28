@@ -35,16 +35,25 @@
                       <th>Status</th>
                     </tr>
                   </tfoot>
+                  
+                  @foreach($entries as $entry)
                   <tbody>
                     <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    
+                      <td>{{ $entry->song_title }}</td>
+                      <td>{{ $entry->notes }}</td>
+                      <td>{{ $entry->created_at }}</td>
+                      <td>{{ $entry->AdminRemark }}</td>
+                      {{ $status = $entry->status }}
+                      <td>
+                        @if($status == 1)
+                          <span style="color: green">Approved</span>
+                        @elseif($status == 2)
+                          <span style="color: red">Not Approved</span>
+                        @elseif($status == 0)
+                          <span style="color: gray">Waiting For Approval</span>
+                        @endif
+                      </td>
+                  @endforeach  
                   </tbody>
                 </table>
               </div>

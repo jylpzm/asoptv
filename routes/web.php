@@ -32,7 +32,6 @@ Route::post('/settings','ProfilesController@changePassword')->name('changePasswo
 //Get Region
 Route::get('/register','GetRegionController@getRegion')->name('register');
 Route::get('/getStates/{id}','GetRegionController@getStates');
-Route::get('/getCities/{id}','GetRegionController@getCities');
 
 
 //register
@@ -41,9 +40,11 @@ Route::post('profile', 'ProfilesController@changeprofile')->name('changeprofile'
 
 //submission
 Route::get('/submit', 'SubmissionsController@index')->name('submission');
-Route::get('/submissions', 'SubmissionsController@submissionhistory')->name('subhistory');
-Route::get('/submissions', 'SubmissionsController@entries');
+Route::get('/submissions', 'SubmissionsController@entries')->name('entries');
 //submiting song
 Route::post('/submit_form', 'SongsController@submitsong');
 
-//User-Submission Entries
+//captcha
+Route::get('createcaptcha', 'CaptchaController@create');
+Route::post('captcha', 'CaptchaController@captchaValidate');
+Route::get('refreshcaptcha', 'SongsController@refreshCaptcha');

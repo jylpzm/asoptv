@@ -26,15 +26,6 @@ class GetRegionController extends Controller
        return response()->json($states);
    }
 
-//For fetching cities
-    public function getCities($id)
-    {
-        $cities= DB::table("philippine_cities")
-        ->where("province_code",$id)
-        ->pluck("city_municipality_description","city_municipality_code");
-        return response()->json($cities);
-    }
-
     public function index(){
 
     }

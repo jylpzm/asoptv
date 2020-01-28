@@ -72,7 +72,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div id="links" class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item submitcon" href="{{ route('submission') }}">Submit Entry</a>
-            <a class="collapse-item" href="{{ route('subhistory') }}">Submitted History</a>
+            <a class="collapse-item" href="{{ route('entries') }}">Submitted History</a>
           </div>
         </div>
       </li>

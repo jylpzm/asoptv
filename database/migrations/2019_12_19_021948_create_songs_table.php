@@ -21,7 +21,7 @@ class CreateSongsTable extends Migration
             $table->binary('lyrics_file');
             $table->string('notes');
             $table->string('song_genre')->nullable();
-            $table->string('AdminRemark')->nullable();
+            $table->string('AdminRemark')->default("hi");
             $table->integer('isRead')->nullable();
             $table->integer('status')->nullable();
             $table->string('user_id')->nullable();
