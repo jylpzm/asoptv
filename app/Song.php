@@ -10,7 +10,7 @@ use Hash;
 class Song extends Model
 {
 	protected $fillable = [
-		'song_title', 'song_genre','audio_file', 'lyrics_file', 'notes', 'user_id',
+		'song_title', 'song_genre','audio_file', 'lyrics_file', 'notes', 'user_id', "status"
 	];
 
     public function submittedsong($request){
@@ -19,7 +19,7 @@ class Song extends Model
     $lyrics_path = $request->file('lyrics_file')->store('public/lyrics');
     $config = ['table'=>'songs','length'=>10,'prefix'=>'YSE'];
     $songid = SongIdGenerator::generate($config);
-
+    $songs->status = $request->input('status');
     $songs->song_id = $request->input('song_id',$songid);
     $songs->user_id = $request->input('user_id');
     $songs->song_title = $request->input('song_title');

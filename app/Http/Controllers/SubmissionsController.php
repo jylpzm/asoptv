@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Submission;
 use App\Song;
 use DB;
+use Auth;
 
 class SubmissionsController extends Controller
 {
@@ -27,12 +28,24 @@ class SubmissionsController extends Controller
 
    }
 
-   public function submissionhistory(){
+   public function submissionhistory(){   
+    
     return view('submissionhistory');
    }
 
    public function entries(){
-        $entries= Submission::all();
-        return view('submissionhistory', compact('songs'));
+
+    // $songs = DB::table('users')
+    // ->join('songs', "users.user_id", "=", "songs.user_id")
+    // ->select("songs.song_title", "users.user_id")
+    // ->get();
+
+    $entries = Song::join('users', "songs.user_id", "=", "users.user_id")
+    ->where('songs.user_id', Auth::user()->user_id)
+    ->select('songs.*')
+    ->get(); 
+    // return $entries;
+    return view('submissionhistory', compact('entries'));
+    // return view('submissionhistory')->("entries", $entries);
    }
 }

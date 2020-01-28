@@ -46,7 +46,7 @@
           @csrf
           <img src="{{ !empty(Auth::user()->avatar) ? url("/storage/avatars/".Auth::user()->avatar) : url("/images/default.jpg") }}" class="avatar img-circle img-thumbnail" alt="avatar">
           <h6>Upload your 2x2 picture here!</h6>
-            <input type="file" class="text-center center-block file-upload" name="avatar">
+            <input type="file" class="text-center center-block file-upload" name="avatar" required="">
           <div class="col-sm-20 mb-3 mb-sm-0">
             <br>
             <div class="col-sm-6">
@@ -66,7 +66,7 @@
                   <input type="text" name="user_id" value="{{ Auth::user()->user_id }}" hidden="">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="firstname">First Name</label><br>
-                    <input name="first_name" id="firstname" type="text" class="form-control form-control-user" value="{{ Auth::user()->first_name }}" disabled="">
+                    <input name="first_name" id="firstname" type="text" class="form-control form-control-   user" value="{{ Auth::user()->first_name }}" disabled="">
                   </div>
                   <div class="col-sm-6">
                     <label for="lastname">Last Name</label><br>

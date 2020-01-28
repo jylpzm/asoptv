@@ -26,8 +26,9 @@
         <form action="submit_form" method="POST" enctype="multipart/form-data" >
         	@csrf
           <input type="text" name="user_id" value="{{ Auth::user()->user_id }}" hidden="">
+          <input type="text" name="status" value="0" hidden="">
           <div class="form-group">
-            <label for="title">Song Genre</label>
+            <label for="title">Song Title</label>
             <input name="song_title" class="form-control" placeholder="Title of your entry" required="">
           </div>
           <div class="form-group">
@@ -59,10 +60,7 @@
           </div>
              <div class="form-group{{ $errors->has('captcha') ? ' has-error' : '' }}">
                       <label for="password" class="col-md-4 control-label">Captcha</label>
-
-
                       <div class="row">
-                        <div class="col-md-4"></div>
                         <div class="form-group col-md-4">
                          <div class="captcha">
                            <span>{!! captcha_img() !!}</span>
@@ -71,7 +69,6 @@
                        </div>
                      </div>
                      <div class="row">
-                      <div class="col-md-4"></div>
                       <div class="form-group col-md-4">
                        <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha"></div>
                      </div>

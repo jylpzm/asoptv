@@ -35,6 +35,7 @@
                       <th>Status</th>
                     </tr>
                   </tfoot>
+                  
                   @foreach($entries as $entry)
                   <tbody>
                     <tr>
@@ -42,8 +43,16 @@
                       <td>{{ $entry->notes }}</td>
                       <td>{{ $entry->created_at }}</td>
                       <td>{{ $entry->AdminRemark }}</td>
-                      <td>{{ $entry->status }}</td>
-                    </tr>
+                      {{ $status = $entry->status }}
+                      <td>
+                        @if($status == 1)
+                          <span style="color: green">Approved</span>
+                        @elseif($status == 2)
+                          <span style="color: red">Not Approved</span>
+                        @elseif($status == 0)
+                          <span style="color: gray">Waiting For Approval</span>
+                        @endif
+                      </td>
                   @endforeach  
                   </tbody>
                 </table>
