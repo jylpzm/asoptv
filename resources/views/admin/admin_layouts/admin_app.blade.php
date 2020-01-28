@@ -70,7 +70,7 @@
 			<a href="#" class="dropdown-item">
 			<!-- Message Start -->
 			<div class="media">
-				<img src="adminlte/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+				<img src="images/nopicture.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
 				<div class="media-body">
 				<h3 class="dropdown-item-title">
 					Brad Diesel
@@ -86,7 +86,7 @@
 			<a href="#" class="dropdown-item">
 			<!-- Message Start -->
 			<div class="media">
-				<img src="adminlte/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+				<img src="images/nopicture.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
 				<div class="media-body">
 				<h3 class="dropdown-item-title">
 					John Pierce
@@ -102,7 +102,7 @@
 			<a href="#" class="dropdown-item">
 			<!-- Message Start -->
 			<div class="media">
-				<img src="adminlte/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+				<img src="images/nopicture.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
 				<div class="media-body">
 				<h3 class="dropdown-item-title">
 					Nora Silvester
@@ -147,16 +147,16 @@
 		</li>
 		<li class="nav-item dropdown user user-menu">
 		<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-			<img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image img-circle elevation-2" alt="User Image">
-			<span class="hidden-xs">Alexander Pierce</span>
+			<img src="images/nopicture.jpg" class="user-image img-circle elevation-2" alt="User Image">
+			<span class="hidden-xs">Bobby delos Santos</span>
 		</a>
 		<ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 			<!-- User image -->
 			<li class="user-header bg-cyan">
-			<img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+			<img src="images/nopicture.jpg" class="img-circle elevation-2" alt="User Image">
 
 			<p>
-				Alexander Pierce - Web Developer
+				Bobby delos Santos - Executive Producer
 				<small>Member since Nov. 2012</small>
 			</p>
 			</li>
@@ -164,13 +164,13 @@
 			<li class="user-body">
 			<div class="row">
 				<div class="col-4 text-center">
-				<a href="#">Followers</a>
+				<a href="#">Settings</a>
 				</div>
 				<div class="col-4 text-center">
-				<a href="#">Sales</a>
+				<a href="#">Logs</a>
 				</div>
 				<div class="col-4 text-center">
-				<a href="#">Friends</a>
+				<a href="#">Admins</a>
 				</div>
 			</div>
 			<!-- /.row -->
@@ -295,7 +295,7 @@
 				</li>
 
 				<li class="nav-item has-treeview">
-					<a href="#" class="nav-link">
+					<a href="adminlte/pages/charts/chartjs.html" class="nav-link">
 						<i class="nav-icon fas fa-chart-pie"></i>
 							<p>
 								Analytics
