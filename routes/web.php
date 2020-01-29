@@ -48,3 +48,18 @@ Route::post('/submit_form', 'SongsController@submitsong');
 Route::get('createcaptcha', 'CaptchaController@create');
 Route::post('captcha', 'CaptchaController@captchaValidate');
 Route::get('refreshcaptcha', 'SongsController@refreshCaptcha');
+
+//Admin Dashboard
+Route::get('/admin', 'admin\AdminController@index')->name('AdminDashboard');
+
+//Manage Administrators
+Route::get('/manage_admins', 'admin\AdminController@indexManageAdmins')->name('ManageAdmins');
+
+//Create New Administrator
+Route::get('/create_admin', 'admin\AdminController@indexCreateNewAdmin')->name('CreateNewAdmin');
+
+//Manage Songwriters
+Route::get('/manage_songwriters', 'admin\AdminController@indexManageSongwriters')->name('ManageSongwriters');
+
+//Manage Song Entries
+Route::get('/manage_song_entries', 'admin\AdminController@indexManageSongEntries')->name('ManageSongEntries');

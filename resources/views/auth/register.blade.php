@@ -17,8 +17,8 @@
 <body class="bg-gradient-primary">
   <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ url('https://www.asoptv.com/') }}">
+                    <img src="https://www.asoptv.com/wp-content/themes/asop-new/favicon.ico"><strong>ASOP TV</strong></img>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-5 d-none d-lg-block" style="background-image: url('{{ asset('images/guitar.jpg')}}');background-position:center;background-size:cover"></div>
           <div class="col-lg-7">
             <div class="p-5">
               <div class="text-center">
