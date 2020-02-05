@@ -60,8 +60,8 @@
                           </button>
                           
                           <ul class="dropdown-menu">
-                            <li><a type="button" class="btn btn-primary" data-toggle="modal" data-target="#" onclick="">Edit</a></li>
-                            <li><a type="button" class="btn btn-danger" data-toggle="modal" data-target="#" onclick="">Remove</a></li>
+                            <li><a type="button" class="btn btn-primary" onclick="">Edit</a></li>
+                            <li><a type="button" class="btn btn-danger" onclick="">Remove</a></li>
                           </ul>
                         </div>
                       </td>

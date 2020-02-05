@@ -45,8 +45,8 @@
 		</li>
 	</ul>
 
-	<!-- SEARCH FORM -->
-	<!-- <form class="form-inline ml-3">
+	SEARCH FORM
+	<form class="form-inline ml-3">
 		<div class="input-group input-group-sm">
 		<input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
 		<div class="input-group-append">
@@ -55,7 +55,7 @@
 			</button>
 		</div>
 		</div>
-	</form> -->
+	</form>
 
 
 	<!-- Right navbar links -->
@@ -197,7 +197,7 @@
 
 
 	<div class="wrapper">
-		<aside class="main-sidebar elevation-4 sidebar-light-info">
+		<aside class="main-sidebar elevation-4 sidebar-dark-primary">
 			<!-- Brand Logo -->
 			<a href="{{route('AdminDashboard')}}" class="brand-link">
 			<img src="https://www.asoptv.com/wp-content/themes/asop-new/favicon.ico" alt="Loading.." class="brand-image img-circle elevation-3"
