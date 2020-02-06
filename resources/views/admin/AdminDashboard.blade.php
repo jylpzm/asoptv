@@ -86,27 +86,28 @@
 
         <!-- Main row -->
         <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-                  <!-- <br />
-                      <br />
-                          <a href="" class="btn btn-primary" style="float: right;"></a>
-                      <br />
-                  <br /> -->
-                  <table class="table table-bordered table-striped" id="">
-                    <thead>
-                      <tr>
-                        <th>No.</th>
-                        <th>Name</th>
-                        <th>Song Title</th>
-                        <th>Genre</th>
-                        <th>Submission Date</th>
-                        <th>Action Taken</th>
-                      </tr>
-                    </thead>
-                  </table>
+          <h2 class="m-0 text-dark">Song Entry Details</h2><br/>
+            <div class="row">
+              <div class="col-md-12">
+                    <!-- <br />
+                        <br />
+                            <a href="" class="btn btn-primary" style="float: right;"></a>
+                        <br />
+                    <br /> -->
+                    <table class="table table-bordered table-striped" id="">
+                      <thead>
+                        <tr>
+                          <th width = "50px">No.</th>
+                          <th width = "300px">Name</th>
+                          <th width = "300px">Song Title</th>
+                          <th width = "120px">Genre</th>
+                          <th width = "200px">Submission Date</th>
+                          <th width = "100px">Action</th>
+                        </tr>
+                      </thead>
+                    </table>
+              </div>
             </div>
-          </div>
         </div>
         <!-- /.row (main row) -->
   
