@@ -21,9 +21,12 @@ class Profile extends Model
     public function changeProfile($request){
 
     	$user = Auth::user();
-        $user->update($request->all());
-    	// $user->save();
+        $user->update(($request->all()));
 
+        $user = Auth::user();
+        $user->contact_num = $request->input('contact_num');
+        $user->street_add = $request->input('street_add');
+        $user->save();
     }
 
     public function updateProfilePic($request){

@@ -7,7 +7,9 @@ use App\Profile;
 use Auth;
 use Hash;
 use Validator;
-
+use App\User;
+use App\PhilippineRegion;
+use App\PhilippineProvince;
 
 class ProfilesController extends Controller
 {
@@ -17,14 +19,20 @@ class ProfilesController extends Controller
         $this->Profile = new Profile;
     }
 
-    public function profile(Request $request){
+    public function profile(){
 
-
-        if($request->ajax()) {
-            return view('profile')->renderSections()['content'];
-        }
-
-        return view('profile');
+        $phregions = PhilippineRegion::join('users', "philippine_regions.region_code", "=", "users.region")
+        ->where('philippine_regions.region_code', Auth::user()->region)
+        ->select('philippine_regions.region_description')
+        ->get(); 
+        // return $phregions;
+        
+        $phprovinces = PhilippineProvince::join('users', "philippine_provinces.province_code", "=", "users.province")
+        ->where('philippine_provinces.province_code', Auth::user()->province)
+        ->select('philippine_provinces.province_description')
+        ->get(); 
+        // return $phprovinces;
+        return view('profile', compact("phregions", "phprovinces"));
     }
 
     public function settings(){
@@ -79,11 +87,6 @@ class ProfilesController extends Controller
         ]);
 
         $this->Profile->changepass($request);
-        // //Change Password
-        // $user = Auth::user();
-        // $user->password = bcrypt($request->get('new-password'));
-        // $user->save();
-
         return redirect()->back()->with("success","Password changed successfully!");
 
     }

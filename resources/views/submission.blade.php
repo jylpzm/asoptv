@@ -32,24 +32,24 @@
             <input name="song_title" class="form-control" placeholder="Title of your entry" required="">
           </div>
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Favourite Platform</label>
+            <label for="exampleFormControlSelect1">Genre</label>
             <select class="form-control" id="exampleFormControlSelect1" name="song_genre" required="required">
-              <option>Github</option>
-              <option>Gitlab</option>
-              <option>Bitbucket</option>
+              <option>song1</option>
+              <option>song2</option>
+              <option>song3</option>
             </select>
           </div>
           <hr>
           <div class="form-group mt-3">
             <label><strong>Upload Song</strong></label>
-            <input type="file" name="audio_file">
+            <input type="file" name="audio_file" accept=".mp3">
             <p class="text-danger">**Only .MP3 file format is accepted.</p>
           </div>
           <hr>
           <div class="form-group mt-3">
             <div class="form-group mt-3">
               <label><strong>Upload lyrics</strong></label>
-              <input type="file" name="lyrics_file">
+              <input type="file" name="lyrics_file" accept=".docx,docs/*">
               <p class="text-danger">**Only Word Document(.docs or docx) file format is accepted.</p>
             </div>
           <hr>
@@ -73,7 +73,7 @@
                        <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha"></div>
                      </div>
           <br>
-          <button type="submit" class="btn btn-primary" S>Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 @endsection

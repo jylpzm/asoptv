@@ -14,6 +14,7 @@ class SubmissionsController extends Controller
     {
 
         $this->middleware('auth');
+        $this->Submission = new Submission;
     }
 
     /**
@@ -39,10 +40,8 @@ class SubmissionsController extends Controller
     // ->join('songs', "users.user_id", "=", "songs.user_id")
     // ->select("songs.song_title", "users.user_id")
     // ->get();
-
     $entries = Song::join('users', "songs.user_id", "=", "users.user_id")
     ->where('songs.user_id', Auth::user()->user_id)
-    ->select('songs.*')
     ->get(); 
     // return $entries;
     return view('submissionhistory', compact('entries'));

@@ -46,7 +46,7 @@
           @csrf
           <img src="{{ !empty(Auth::user()->avatar) ? url("/storage/avatars/".Auth::user()->avatar) : url("/images/default.jpg") }}" class="avatar img-circle img-thumbnail" alt="avatar">
           <h6>Upload your 2x2 picture here!</h6>
-            <input type="file" class="text-center center-block file-upload" name="avatar" required="">
+        <input type="file" class="text-center center-block file-upload" name="avatar" required="" accept=".jpg,.png,jpeg">
           <div class="col-sm-20 mb-3 mb-sm-0">
             <br>
             <div class="col-sm-6">
@@ -93,7 +93,7 @@
                   <div class="col-sm-6">
                     <label for="gender">Gender:</label><br>
                     <select name="gender" id="gender" class="custom-select" disabled="">
-                      <option value="">{{ Auth::user()->gender }}</option>
+                      <option value="{{ Auth::user()->gender }}">{{ Auth::user()->gender }}</option>
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
                     </select>
@@ -104,13 +104,13 @@
                     <input name="street_add" id="streetadd" type="text" class="form-control form-control-user"  placeholder="Put Your Complete Address here" disabled="" value="{{ Auth::user()->street_add }}">
                 </div>
                 <div>
-                  <select class="form-control" name="phregion" id="phregion" disabled="">
-                    <option value="">{{ Auth::user()->region }}</option>
-                 </select>
+                  @foreach($phregions as $phregion)
+                  	<input class="form-control form-control-user" value="{{ $phregion->region_description }}" readonly="">
+                  @endforeach
 
-                 <select class="form-control slcState" name="state" id="state" disabled="">
-                 </select>
-                 <select class="form-control slcCity" name="city" id="city" disabled="">
+                  @foreach($phprovinces as $phprovince)
+                 	<input class="form-control form-control-user" value="{{ $phprovince->province_description }}" readonly="">
+                  @endforeach
                  </select>
                </div><br/>
                 </a>
@@ -135,7 +135,7 @@
 
 @endsection
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="{{ asset("/vendor/jquery/jquery.min.js") }}"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     

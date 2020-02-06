@@ -25,16 +25,6 @@
                       <th>Status</th>
                     </tr>
                   </thead>
-                  <tfoot>
-  
-                    <tr>
-                      <th>Song Title</th>
-                      <th>Description</th>
-                      <th>Posting Date</th>
-                      <th>Admin Remark</th>
-                      <th>Status</th>
-                    </tr>
-                  </tfoot>
                   
                   @foreach($entries as $entry)
                   <tbody>
@@ -65,6 +55,5 @@
 
       </div>
       <!-- End of Main Content -->
-
 
 @endsection
