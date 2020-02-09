@@ -17,6 +17,8 @@ Route::get('/', function () {
 });
 
 
+Route::group(['middleware' => ['revalidate']], function(){
+
 
 //profile settings
 Route::get('/home', 'HomeController@index')->name('home');
@@ -39,8 +41,8 @@ Route::post('profile', 'ProfilesController@changeprofile')->name('changeprofile'
 // Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 //submission
-Route::get('/submit', 'SubmissionsController@index')->name('submission');
-Route::get('/submissions', 'SubmissionsController@entries')->name('entries');
+Route::get('/submit', 'SubmissionsController@submit')->name('submission');
+Route::get('/submissions', 'SubmissionsController@index')->name('entries');
 //submiting song
 Route::post('/submit_form', 'SongsController@submitsong');
 
@@ -66,3 +68,5 @@ Route::get('/manage_songwriters', 'admin\AdminController@indexManageSongwriters'
 
 //Manage Song Entries Dashbaord
 Route::get('/manage_song_entries', 'admin\AdminController@indexManageSongEntries')->name('ManageSongEntries');
+
+});

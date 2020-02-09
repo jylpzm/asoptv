@@ -97,7 +97,7 @@
                   </div>
                 </div>
                 <div>
-                  <select class="form-control" name="region" id="phregion" required="">
+                  <select class="form-control" name="region" id="phregion">
                     <option value="">Select Region</option>
 
                     @foreach ($phregions as $phregion) 

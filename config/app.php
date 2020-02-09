@@ -191,6 +191,7 @@ return [
     */
 
     'aliases' => [
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'App' => Illuminate\Support\Facades\App::class,
