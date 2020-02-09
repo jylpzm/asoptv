@@ -50,10 +50,13 @@ Route::post('captcha', 'CaptchaController@captchaValidate');
 Route::get('refreshcaptcha', 'SongsController@refreshCaptcha');
 
 //Admin Dashboard
-Route::get('/admin', 'admin\AdminController@index')->name('AdminDashboard');
+Route::get('/admin_dashboard', 'admin\AdminController@index')->name('AdminDashboard');
 
 //Manage Administrators Dashboard
 Route::get('/manage_admins', 'admin\AdminController@indexManageAdmins')->name('ManageAdmins');
+
+//New Administrator Dashboard
+Route::get('/add_admin', 'admin\AdminController@indexCreateNewAdmin')->name('AddAdministrator');
 
 //Create New Administrator
 Route::post('/create_new_admin', 'admin\AdminController@createAdmin')->name('CreateAdministrator');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Admin\AdminModel;
+use App\User;
+use App\Song;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
@@ -18,7 +20,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin/AdminDashboard');
+        $songs = Song::all();
+        return view('admin/AdminDashboard')->with('songs', $songs);
     }
 
     public function indexManageAdmins()
@@ -27,14 +30,21 @@ class AdminController extends Controller
         return view('admin/ManageAdmins')->with('admins', $admins);
     }
 
+    public function indexCreateNewAdmin()
+    {
+        return view('admin/CreateNewAdmin');
+    }
+
     public function indexManageSongwriters()
     {
-        return view('admin/ManageSongwriters');
+        $users = User::all();
+        return view('admin/ManageSongwriters')->with('users', $users);
     }
 
     public function indexManageSongEntries()
     {
-        return view('admin/ManageSongEntries');
+        $songs = Song::all();
+        return view('admin/ManageSongEntries')->with('songs', $songs);
     }
 
     public function createAdmin(Request $request)
@@ -44,7 +54,7 @@ class AdminController extends Controller
             'admin_position',
             'email_address' => 'required',
             'contact_num' => 'required',
-            'admin_icon',
+            'admin_icon' => 'image|nullable|max:1999',
             'admin_password' => 'required'
         ]);
 
@@ -55,6 +65,6 @@ class AdminController extends Controller
         
         $this->AdminModel->newAdmin($request);
         
-        return redirect("manage_admins")->with("message", "New Admin added successfully!");
+        return redirect("manage_admins")->with('success', 'New Admin added successfully!');
     }
 }

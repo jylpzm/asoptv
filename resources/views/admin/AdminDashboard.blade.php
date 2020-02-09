@@ -1,4 +1,3 @@
-
 @extends('admin/admin_layouts.admin_app')
 
 @section('content')
@@ -85,7 +84,7 @@
         <!-- /.row -->
 
         <!-- Main row -->
-        <div class="container">
+        <div class="container-fluid">
           <h2 class="m-0 text-dark">Song Entry Details</h2><br/>
             <div class="row">
               <div class="col-md-12">
@@ -94,7 +93,7 @@
                             <a href="" class="btn btn-primary" style="float: right;"></a>
                         <br />
                     <br /> -->
-                    <table class="table table-bordered table-striped" id="">
+                    <table class="table table-bordered table-striped" id="adminTable">
                       <thead>
                         <tr>
                           <th width = "50px">No.</th>
@@ -105,15 +104,36 @@
                           <th width = "100px">Action</th>
                         </tr>
                       </thead>
+
+                      <?php $num = 1; ?>
+                      @foreach($songs as $song)
+                        <tr>
+                          <td>{{$num++}}</td>
+                          <td>{{$song->song_title}}</td>
+                          <td>{{$song->song_genre}}</td>
+                          <!-- <td>{{$song->song_position}}</td>
+                          <td>{{$song->email_address}}</td>
+                          <td>{{$song->contact_num}}</td> -->
+                          <td>
+                            <div class="">
+                              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Action</button>
+                              
+                              <ul class="dropdown-menu">
+                                <li><a type="button" class="btn btn-primary" onclick="">Edit</a></li>
+                                <li><a type="button" class="btn btn-danger" onclick="">Remove</a></li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                      @endforeach
+
                     </table>
               </div>
             </div>
-        </div>
-        <!-- /.row (main row) -->
-  
+        </div><!-- /.row (main row) -->
+        
       </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    </section><!-- /.content -->
+  </div><!-- /.content-wrapper -->
+
 @endsection

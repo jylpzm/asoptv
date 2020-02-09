@@ -20,7 +20,7 @@ class Admins extends Migration
             $table->string('admin_position')->nullable();
             $table->string('email_address')->nullable();
             $table->string('contact_num')->nullable();
-            $table->binary('admin_icon')->nullable();
+            $table->string('admin_icon')->nullable();
             $table->string('admin_password')->nullable();
             $table->rememberToken();
             $table->timestamps();
