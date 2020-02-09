@@ -39,8 +39,8 @@ Route::post('profile', 'ProfilesController@changeprofile')->name('changeprofile'
 // Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 //submission
-Route::get('/submit', 'SubmissionsController@index')->name('submission');
-Route::get('/submissions', 'SubmissionsController@entries')->name('entries');
+Route::get('/submit', 'SubmissionsController@submit')->name('submission');
+Route::get('/submissions', 'SubmissionsController@index')->name('entries');
 //submiting song
 Route::post('/submit_form', 'SongsController@submitsong');
 

@@ -15,7 +15,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="table" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Song Title</th>
@@ -26,7 +26,7 @@
                     </tr>
                   </thead>
                   
-                  @foreach($entries as $entry)
+{{--                   @foreach($entries as $entry)
                   <tbody>
                     <tr>
                       <td>{{ $entry->song_title }}</td>
@@ -43,7 +43,7 @@
                           <span style="color: gray">Waiting For Approval</span>
                         @endif
                       </td>
-                  @endforeach  
+                  @endforeach   --}}
                   </tbody>
                 </table>
               </div>
@@ -57,3 +57,20 @@
       <!-- End of Main Content -->
 
 @endsection
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+         $(function() {
+               $('#table').DataTable({
+               processing: true,
+               serverSide: true,
+               ajax: '{{ route('entries') }}',
+               columns: [
+                        { data: 'song_title', name: 'song_title' },
+                        { data: 'notes', name: 'notes' },
+                        { data: 'created_at', name: 'created_at' },
+                        { data: 'AdminRemark', name: 'AdminRemark' },
+                        { data: 'status', name: 'status' }
+                     ]
+            });
+         });
+         </script>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Submission;
 use App\Song;
+use DataTables;
 use DB;
 use Auth;
 
@@ -25,9 +26,27 @@ class SubmissionsController extends Controller
       public function index(Request $request)
     {
 
-        return view('submission');
+      if($request->ajax())
+      {
+       $entries = Song::join('users', "songs.user_id", "=", "users.user_id")
+       ->where('songs.user_id', Auth::user()->user_id)
+       ->select('songs.*')
+       ->get(); 
+        return DataTables::of($entries)
+        ->editColumn('status', function($entries){
+          if ($entries->status == 0) return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
+          if ($entries->status == 1) return '<span style="color: green">Approved</span>';
+          if ($entries->status == 2) return '<span style="color: red">Not Approved</span>';
 
-   }
+          
+        })
+        ->rawColumns(['status'])
+        ->make(true);
+        
+      }
+
+      return view('submissionhistory', compact('entries'));
+}
 
    public function submissionhistory(){   
     
@@ -44,7 +63,16 @@ class SubmissionsController extends Controller
     ->where('songs.user_id', Auth::user()->user_id)
     ->get(); 
     // return $entries;
-    return view('submissionhistory', compact('entries'));
+    if (request()->ajax()){
+      $test = Datatables::of($entries)
+            ->make();
+    }
+    return view('submissionhistory', compact('test'));
     // return view('submissionhistory')->("entries", $entries);
+    // 
+    // 
+   }
+   public function submit(){
+    return view ('submission');
    }
 }
