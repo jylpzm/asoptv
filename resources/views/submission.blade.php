@@ -23,7 +23,7 @@
      <div class="col-md-6 offset-md-3 mt-5">
         <h1>SUBMIT YOUR SONG!</h1><br>
         
-        <form action="submit_form" method="POST" enctype="multipart/form-data" >
+        <form action="submit_form" method="POST" enctype="multipart/form-data" autocomplete="off">
         	@csrf
           <input type="text" name="user_id" value="{{ Auth::user()->user_id }}" hidden="">
           <input type="text" name="status" value="0" hidden="">

@@ -17,6 +17,8 @@ Route::get('/', function () {
 });
 
 
+Route::group(['middleware' => ['revalidate']], function(){
+
 
 //profile settings
 Route::get('/home', 'HomeController@index')->name('home');
@@ -63,3 +65,5 @@ Route::get('/manage_songwriters', 'admin\AdminController@indexManageSongwriters'
 
 //Manage Song Entries Dashbaord
 Route::get('/manage_song_entries', 'admin\AdminController@indexManageSongEntries')->name('ManageSongEntries');
+
+});
