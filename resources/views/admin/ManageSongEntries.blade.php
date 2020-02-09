@@ -18,7 +18,7 @@
 
 
         <!-- Main row -->
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
                   <!-- <br />
@@ -26,7 +26,7 @@
                           <a href="" class="btn btn-primary" style="float: right;"></a>
                       <br />
                   <br /> -->
-                  <table class="table table-bordered table-striped" id="">
+                  <table class="table table-bordered table-striped" id="adminTable">
                     <thead>
                       <tr>
                         <th>No.</th>
@@ -37,6 +37,29 @@
                         <th>Action</th>
                       </tr>
                     </thead>
+
+                    <?php $num = 1; ?>
+                    @foreach($songs as $song)
+                      <tr>
+                        <td>{{$num++}}</td>
+                        <td>{{$song->song_title}}</td>
+                        <td>{{$song->song_genre}}</td>
+                        <!-- <td>{{$song->song_position}}</td>
+                        <td>{{$song->email_address}}</td>
+                        <td>{{$song->contact_num}}</td> -->
+                        <td>
+                          <div class="">
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Action</button>
+                            
+                            <ul class="dropdown-menu">
+                              <li><a type="button" class="btn btn-primary" onclick="">Edit</a></li>
+                              <li><a type="button" class="btn btn-danger" onclick="">Remove</a></li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                    @endforeach
+
                   </table>
             </div>
           </div>

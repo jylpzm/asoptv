@@ -18,7 +18,7 @@
 
 
         <!-- Main row -->
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
                   <!-- <br />
@@ -26,7 +26,7 @@
                           <a href="" class="btn btn-primary" style="float: right;"></a>
                       <br />
                   <br /> -->
-                  <table class="table table-bordered table-striped" id="">
+                  <table class="table table-bordered table-striped" id="adminTable">
                     <thead>
                       <tr>
                         <th>No.</th>
@@ -37,6 +37,28 @@
                         <th>Action</th>
                       </tr>
                     </thead>
+
+                    <?php $num = 1; ?>
+                    @foreach($users as $user)
+                      <tr>
+                        <td>{{$num++}}</td>
+                        <td>{{$user->first_name}}</td>
+                        <td>{{$user->province}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->contact_num}}</td>
+                        <td>
+                          <div class="">
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Action</button>
+                            
+                            <ul class="dropdown-menu">
+                              <li><a type="button" class="btn btn-primary" onclick="">Edit</a></li>
+                              <li><a type="button" class="btn btn-danger" onclick="">Remove</a></li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                    @endforeach
+
                   </table>
             </div>
           </div>

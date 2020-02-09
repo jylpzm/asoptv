@@ -52,7 +52,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'dob' => ['required', 'before:now', 'before:18 years'],
+            'dob' => ['required', 'before:now', 'after:18 years'],
             'before' => ['You must be at least 13 years old'],
 
         ]);

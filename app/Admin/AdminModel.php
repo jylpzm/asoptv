@@ -17,8 +17,8 @@ class AdminModel extends Model
         $admins->admin_position = $request->input('admin_position');
         $admins->email_address = $request->input('email_address');
         $admins->contact_num = $request->input('contact_num');
-        $icon_path = $request->file('admin_icon')->store('public/images');
-        $request->file('admin_icon')->store('public/images');
+        $request->file('admin_icon')->store('public/admin');
+        $admins->admin_icon = $request->file('admin_icon')->hashName();
         $admins->admin_password = $request->input('admin_password');
         $admins->save();
        }

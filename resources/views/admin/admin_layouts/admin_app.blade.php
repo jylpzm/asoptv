@@ -8,30 +8,48 @@
   	
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
+
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="{{asset('adminlte/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
+
 	<!-- Tempusdominus Bbootstrap 4 -->
 	<link rel="stylesheet" href="{{asset('adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+
 	<!-- iCheck -->
 	<link rel="stylesheet" href="{{asset('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+
 	<!-- JQVMap -->
 	<link rel="stylesheet" href="{{asset('adminlte/plugins/jqvmap/jqvmap.min.css')}}">
+
 	<!-- Theme style -->
 	<link rel="stylesheet" href="{{asset('adminlte/dist/css/adminlte.min.css')}}">
+
 	<!-- overlayScrollbars -->
 	<link rel="stylesheet" href="{{asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+
 	<!-- Daterange picker -->
 	<link rel="stylesheet" href="{{asset('adminlte/plugins/daterangepicker/daterangepicker.css')}}">
+
 	<!-- summernote -->
 	<link rel="stylesheet" href="{{asset('adminlte/plugins/summernote/summernote-bs4.css')}}">
+
 	<!-- Google Font: Source Sans Pro -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700')}}">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="{{asset('adminlte/bower_components/font-awesome/css/font-awesome.min.css')}}">
+
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="{{asset('adminlte/bower_components/Ionicons/css/ionicons.min.css')}}">
+
 	<!-- DataTables -->
-	<link rel="stylesheet" href="http://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+	<!-- <link rel="stylesheet" href="{{asset('adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}"> -->
+	<link rel="stylesheet" type="text/css" href="{{asset('datatables/dataTables.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('dataTables.min.js')}}">
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css"> -->
 </head>
 
 
@@ -199,7 +217,7 @@
 	<div class="wrapper">
 		<aside class="main-sidebar elevation-4 sidebar-dark-primary">
 			<!-- Brand Logo -->
-			<a href="{{route('AdminDashboard')}}" class="brand-link">
+			<a href="{{ route('AdminDashboard') }}" class="brand-link">
 			<img src="https://www.asoptv.com/wp-content/themes/asop-new/favicon.ico" alt="Loading.." class="brand-image img-circle elevation-3"
 				style="opacity: .8">
 			<span class="brand-text font-weight-light"><h3>ASOPTV</h3></span>
@@ -240,11 +258,11 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="{{route('ManageAdmins')}}" class="nav-link">
+									<a href="{{ route('ManageAdmins') }}" class="nav-link">
 										<i class="nav-icon fas fa-users"></i>
 										<p>Manage Admins</p>
 									</a>
-									<a href="{{route('ManageSongwriters')}}" class="nav-link">
+									<a href="{{ route('ManageSongwriters') }}" class="nav-link">
 										<i class="nav-icon fas fa-users"></i>
 										<p>Manage Songwriters</p>
 									</a>
@@ -274,8 +292,8 @@
 							</a>
 							<ul class="nav nav-treeview">
 							<li class="nav-item">
-									<a href="{{route('ManageSongEntries')}}" class="nav-link">
-										<i class="fas fa-bars nav-icon"></i>
+									<a href="{{ route('ManageSongEntries') }}" class="nav-link">
+										<i class="fas fa-file-audio-o nav-icon"></i>
 										<p>Manage Song Entries</p>
 									</a>
 							</li>
@@ -322,38 +340,74 @@
 
 
 	<!-- jQuery -->
-	<script src="adminlte/plugins/jquery/jquery.min.js"></script>
+	<script src="{{asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
 	<!-- jQuery UI 1.11.4 -->
-	<script src="adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script src="{{asset('adminlte/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
 	$.widget.bridge('uibutton', $.ui.button)
 	</script>
 	<!-- Bootstrap 4 -->
-	<script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="{{asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
 	<!-- ChartJS -->
-	<script src="adminlte/plugins/chart.js/Chart.min.js"></script>
+	<script src="{{asset('adminlte/plugins/chart.js/Chart.min.js')}}"></script>
+
 	<!-- Sparkline -->
-	<script src="adminlte/plugins/sparklines/sparkline.js"></script>
+	<script src="{{asset('adminlte/plugins/sparklines/sparkline.js')}}"></script>
+
 	<!-- JQVMap -->
-	<script src="adminlte/plugins/jqvmap/jquery.vmap.min.js"></script>
-	<script src="adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+	<script src="{{asset('adminlte/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+	<script src="{{asset('adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+
 	<!-- jQuery Knob Chart -->
-	<script src="adminlte/plugins/jquery-knob/jquery.knob.min.js"></script>
+	<script src="{{asset('adminlte/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+
 	<!-- daterangepicker -->
-	<script src="adminlte/plugins/moment/moment.min.js"></script>
-	<script src="adminlte/plugins/daterangepicker/daterangepicker.js"></script>
+	<script src="{{asset('adminlte/plugins/moment/moment.min.js')}}"></script>
+	<script src="{{asset('adminlte/plugins/daterangepicker/daterangepicker.js')}}"></script>
+
 	<!-- Tempusdominus Bootstrap 4 -->
-	<script src="adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+	<script src="{{asset('adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+
 	<!-- Summernote -->
-	<script src="adminlte/plugins/summernote/summernote-bs4.min.js"></script>
+	<script src="{{asset('adminlte/plugins/summernote/summernote-bs4.min.js')}}"></script>
+
 	<!-- overlayScrollbars -->
-	<script src="adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+	<script src="{{asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+
+	<!-- jQuery 3 -->
+	<script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}"></script>
+
+	<!-- Bootstrap 3.3.7 -->
+	<script src="{{asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+
+	<!-- DataTables -->
+	<!-- <script src="{{asset('adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script> -->
+	<!-- <script src="{{asset('adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script> -->
+	<script type="text/javascript" src="{{asset('datatables/dataTables.min.css')}}"></script>
+	<script type="text/javascript" src="{{asset('datatables/dataTables.min.js')}}"></script>
+	<!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script> -->
+
+	<!-- SlimScroll -->
+	<script src="{{asset('adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
+
+	<!-- FastClick -->
+	<script src="{{asset('adminlte/bower_components/fastclick/lib/fastclick.js')}}"></script>
+
 	<!-- AdminLTE App -->
-	<script src="adminlte/dist/js/adminlte.js"></script>
+	<script src="{{asset('adminlte/dist/js/adminlte.js')}}"></script>
+
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="adminlte/dist/js/pages/dashboard.js"></script>
+	<script src="{{asset('adminlte/dist/js/pages/dashboard.js')}}"></script>
+
 	<!-- AdminLTE for demo purposes -->
-	<script src="adminlte/dist/js/demo.js"></script>
+	<script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
+
+	<script>
+	  $(document).ready( function () {
+	    $('#adminTable').DataTable();
+	  } );
+	</script>
 </body>
 </html>
