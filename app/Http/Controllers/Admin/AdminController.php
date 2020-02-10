@@ -9,6 +9,7 @@ use App\Song;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -20,8 +21,17 @@ class AdminController extends Controller
 
     public function index()
     {
-        $songs = Song::all();
-        return view('admin/AdminDashboard')->with('songs', $songs);
+        $newEntries = DB::table('songs')
+            ->join('users', 'users.user_id', '=', 'songs.user_id')
+            ->select('users.*', 'songs.*')
+            ->get();
+
+        return view('admin/AdminDashboard')->with('newEntries', $newEntries);
+    }
+
+    public function indexAdminLogin()
+    {
+        return view('admin/admin_auth/admin_login');
     }
 
     public function indexManageAdmins()
@@ -43,7 +53,11 @@ class AdminController extends Controller
 
     public function indexManageSongEntries()
     {
-        $songs = Song::all();
+        $songs = DB::table('songs')
+            ->join('users', 'users.user_id', '=', 'songs.user_id')
+            ->select('users.*', 'songs.*')
+            ->get();
+
         return view('admin/ManageSongEntries')->with('songs', $songs);
     }
 

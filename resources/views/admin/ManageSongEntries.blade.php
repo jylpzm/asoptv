@@ -29,24 +29,25 @@
                   <table class="table table-bordered table-striped" id="adminTable">
                     <thead>
                       <tr>
-                        <th>No.</th>
-                        <th>Song Title</th>
-                        <th>Songwriter</th>
-                        <th>Genre</th>
-                        <th>Submission Date</th>
-                        <th>Action</th>
+                        <th width = "30px">No.</th>
+                        <th width = "180px">First Name</th>
+                        <th width = "180px">Last Name</th>
+                        <th width = "180px">Song Title</th>
+                        <th width = "80px">Genre</th>
+                        <th width = "120px">Submission Date</th>
+                        <th width = "100px">Action</th>
                       </tr>
                     </thead>
 
                     <?php $num = 1; ?>
                     @foreach($songs as $song)
                       <tr>
-                        <td>{{$num++}}</td>
-                        <td>{{$song->song_title}}</td>
-                        <td>{{$song->song_genre}}</td>
-                        <!-- <td>{{$song->song_position}}</td>
-                        <td>{{$song->email_address}}</td>
-                        <td>{{$song->contact_num}}</td> -->
+                        <td>{{ $num++ }}</td>
+                        <td>{{ $song->first_name }}</td>
+                        <td>{{ $song->last_name }}</td>
+                        <td>{{ $song->song_title }}</td>
+                        <td>{{ $song->song_genre }}</td>
+                        <td>{{ $song->created_at }}</td>
                         <td>
                           <div class="">
                             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Action</button>

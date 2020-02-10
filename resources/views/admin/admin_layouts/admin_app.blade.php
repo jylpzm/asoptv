@@ -49,7 +49,6 @@
 	<!-- <link rel="stylesheet" href="{{asset('adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}"> -->
 	<link rel="stylesheet" type="text/css" href="{{asset('datatables/dataTables.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('dataTables.min.js')}}">
-	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css"> -->
 </head>
 
 
@@ -330,23 +329,26 @@
 
 	
 		<footer class="main-footer">
-		<strong>Copyright &copy; 2020 <a href="https://www.asoptv.com/">ASOP Music Festival</a>.</strong>
-		All rights reserved.
-		<div class="float-right d-none d-sm-inline-block">
-			<b>Version</b> 1.0
-		</div>
+			<strong>Copyright &copy; 2020 <a href="https://www.asoptv.com/">ASOP Music Festival</a>.</strong>
+				All rights reserved.
+					<div class="float-right d-none d-sm-inline-block">
+				<b>Version</b> 1.0
+			</div>
 		</footer>
 	</div>
 
 
 	<!-- jQuery -->
 	<script src="{{asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
+
 	<!-- jQuery UI 1.11.4 -->
 	<script src="{{asset('adminlte/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
-	$.widget.bridge('uibutton', $.ui.button)
+		$.widget.bridge('uibutton', $.ui.button)
 	</script>
+
 	<!-- Bootstrap 4 -->
 	<script src="{{asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
@@ -387,7 +389,6 @@
 	<!-- <script src="{{asset('adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script> -->
 	<script type="text/javascript" src="{{asset('datatables/dataTables.min.css')}}"></script>
 	<script type="text/javascript" src="{{asset('datatables/dataTables.min.js')}}"></script>
-	<!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script> -->
 
 	<!-- SlimScroll -->
 	<script src="{{asset('adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
@@ -405,9 +406,23 @@
 	<script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
 
 	<script>
-	  $(document).ready( function () {
-	    $('#adminTable').DataTable();
-	  } );
+	  $(function () {
+	    $('#adminTable').DataTable()
+	  })
 	</script>
+
+	<!-- <script>
+	  $(function () {
+	    $('#adminTable').DataTable()
+	    $('#adminTable').DataTable({
+	      'paging'      : true,
+	      'lengthChange': false,
+	      'searching'   : false,
+	      'ordering'    : true,
+	      'info'        : true,
+	      'autoWidth'   : false
+	    })
+	  })
+	</script> -->
 </body>
 </html>

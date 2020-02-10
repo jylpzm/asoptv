@@ -29,7 +29,7 @@
                 <p>New Entries</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="ion ion-email"></i>
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -74,7 +74,7 @@
                 <p>Pending Applications</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-social-buffer"></i>
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -96,37 +96,32 @@
                     <table class="table table-bordered table-striped" id="adminTable">
                       <thead>
                         <tr>
-                          <th width = "50px">No.</th>
-                          <th width = "300px">Name</th>
-                          <th width = "300px">Song Title</th>
-                          <th width = "120px">Genre</th>
-                          <th width = "200px">Submission Date</th>
+                          <th width = "30px">No.</th>
+                          <th width = "180px">First Name</th>
+                          <th width = "180px">Last Name</th>
+                          <th width = "180px">Song Title</th>
+                          <th width = "80px">Genre</th>
+                          <th width = "120px">Submission Date</th>
                           <th width = "100px">Action</th>
                         </tr>
                       </thead>
 
                       <?php $num = 1; ?>
-                      @foreach($songs as $song)
+                      @foreach($newEntries as $row)
                         <tr>
-                          <td>{{$num++}}</td>
-                          <td>{{$song->song_title}}</td>
-                          <td>{{$song->song_genre}}</td>
-                          <!-- <td>{{$song->song_position}}</td>
-                          <td>{{$song->email_address}}</td>
-                          <td>{{$song->contact_num}}</td> -->
+                          <td>{{ $num++ }}</td>
+                          <td>{{ $row->first_name }}</td>
+                          <td>{{ $row->last_name }}</td>
+                          <td>{{ $row->song_title }}</td>
+                          <td>{{ $row->song_genre }}</td>
+                          <td>{{ $row->created_at }}</td>
                           <td>
                             <div class="">
-                              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Action</button>
-                              
-                              <ul class="dropdown-menu">
-                                <li><a type="button" class="btn btn-primary" onclick="">Edit</a></li>
-                                <li><a type="button" class="btn btn-danger" onclick="">Remove</a></li>
-                              </ul>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="">View Details</button>
                             </div>
                           </td>
                         </tr>
                       @endforeach
-
                     </table>
               </div>
             </div>

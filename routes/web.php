@@ -24,6 +24,7 @@ Route::group(['middleware' => ['revalidate']], function(){
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfilesController@profile')->name('profile');
 Route::get('/settings', 'ProfilesController@settings')->name('settings');
+
 //edit profile
 Route::post('/profilepicture', 'ProfilesController@editprofilePic')->name('changeDP');
 
@@ -50,6 +51,9 @@ Route::post('/submit_form', 'SongsController@submitsong');
 Route::get('createcaptcha', 'CaptchaController@create');
 Route::post('captcha', 'CaptchaController@captchaValidate');
 Route::get('refreshcaptcha', 'SongsController@refreshCaptcha');
+
+//Admin Login Page
+Route::get('/admin_login', 'admin\AdminController@indexAdminLogin')->name('AdminLogin');
 
 //Admin Dashboard
 Route::get('/admin_dashboard', 'admin\AdminController@index')->name('AdminDashboard');

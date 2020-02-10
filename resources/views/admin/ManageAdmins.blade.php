@@ -49,14 +49,14 @@
                     </thead>
 
                   <?php $num = 1; ?>
-                  @foreach($admins as $admin)
+                  @foreach($admins as $row)
                     <tr>
-                      <td>{{$num++}}</td>
-                      <td><img src="/storage/admin/{{ $admin->admin_icon }}" class="img-thumbnail" width="80"></td>
-                      <td>{{$admin->full_name}}</td>
-                      <td>{{$admin->admin_position}}</td>
-                      <td>{{$admin->email_address}}</td>
-                      <td>{{$admin->contact_num}}</td>
+                      <td>{{ $num++ }}</td>
+                      <td><img src="/storage/admin/{{ $row->admin_icon }}" class="img-thumbnail" width="80"></td>
+                      <td>{{ $row->full_name }}</td>
+                      <td>{{ $row->admin_position }}</td>
+                      <td>{{ $row->email_address }}</td>
+                      <td>{{ $row->contact_num }}</td>
                       <td>
                         <div class="">
                           <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Action</button>
