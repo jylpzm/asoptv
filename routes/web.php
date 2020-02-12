@@ -16,25 +16,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::group(['middleware' => ['revalidate']], function(){
-
 
 //profile settings
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfilesController@profile')->name('profile');
 Route::get('/settings', 'ProfilesController@settings')->name('settings');
+
 //edit profile
 Route::post('/profilepicture', 'ProfilesController@editprofilePic')->name('changeDP');
 
 //change pass
 Route::post('/settings','ProfilesController@changePassword')->name('changePassword');
 
-
 //Get Region
 Route::get('/register','GetRegionController@getRegion')->name('register');
 Route::get('/getStates/{id}','GetRegionController@getStates');
-
 
 //register
 Route::post('profile', 'ProfilesController@changeprofile')->name('changeprofile');
@@ -43,6 +40,7 @@ Route::post('profile', 'ProfilesController@changeprofile')->name('changeprofile'
 //submission
 Route::get('/submit', 'SubmissionsController@submit')->name('submission');
 Route::get('/submissions', 'SubmissionsController@index')->name('entries');
+
 //submiting song
 Route::post('/submit_form', 'SongsController@submitsong');
 
@@ -70,7 +68,4 @@ Route::get('/manage_songwriters', 'admin\AdminController@indexManageSongwriters'
 
 //Manage Song Entries Dashbaord
 Route::get('/manage_song_entries', 'admin\AdminController@indexManageSongEntries')->name('ManageSongEntries');
-
-
-
 });

@@ -29,31 +29,28 @@
                   <table class="table table-bordered table-striped" id="adminTable">
                     <thead>
                       <tr>
-                        <th>No.</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Email Address</th>
-                        <th>Contact No.</th>
-                        <th>Action</th>
+                        <th width = "30px">No.</th>
+                        <th width = "180px">First Name</th>
+                        <th width = "180px">Last Name</th>
+                        <th width = "300px">Address</th>
+                        <th width = "150px">Email Address</th>
+                        <th width = "100px">Contact No.</th>
+                        <th width = "100px">Action</th>
                       </tr>
                     </thead>
 
                     <?php $num = 1; ?>
                     @foreach($users as $user)
                       <tr>
-                        <td>{{$num++}}</td>
-                        <td>{{$user->first_name}}</td>
-                        <td>{{$user->province}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->contact_num}}</td>
+                        <td>{{ $num++ }}</td>
+                        <td>{{ $user->first_name }}</td>
+                        <td>{{ $user->last_name }}</td>
+                        <td>{{ $user->street_add }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->contact_num }}</td>
                         <td>
                           <div class="">
-                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Action</button>
-                            
-                            <ul class="dropdown-menu">
-                              <li><a type="button" class="btn btn-primary" onclick="">Edit</a></li>
-                              <li><a type="button" class="btn btn-danger" onclick="">Remove</a></li>
-                            </ul>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="">View Details</button>
                           </div>
                         </td>
                       </tr>

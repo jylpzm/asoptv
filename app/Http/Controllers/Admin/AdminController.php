@@ -14,16 +14,20 @@ use DB;
 
 class AdminController extends Controller
 {
-    public function __construct(){
-
-        // $this->middleware('auth');
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
         $this->AdminModel = new AdminModel;
     }
 
     public function index()
     {
-        $songs = Song::all();
-        return view('admin/AdminDashboard')->with('songs', $songs);
+        $newEntries = DB::table('songs')
+            ->join('users', 'users.user_id', '=', 'songs.user_id')
+            ->select('users.*', 'songs.*')
+            ->get();
+
+        return view('admin/AdminDashboard')->with('newEntries', $newEntries);
     }
 
     public function indexManageAdmins()
