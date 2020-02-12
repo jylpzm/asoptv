@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function __construct(){
-
-        // $this->middleware('auth');
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
         $this->AdminModel = new AdminModel;
     }
 
@@ -27,11 +27,6 @@ class AdminController extends Controller
             ->get();
 
         return view('admin/AdminDashboard')->with('newEntries', $newEntries);
-    }
-
-    public function indexAdminLogin()
-    {
-        return view('admin/admin_auth/admin_login');
     }
 
     public function indexManageAdmins()

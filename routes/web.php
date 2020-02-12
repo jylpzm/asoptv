@@ -16,9 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::group(['middleware' => ['revalidate']], function(){
-
 
 //profile settings
 Route::get('/home', 'HomeController@index')->name('home');
@@ -31,11 +29,9 @@ Route::post('/profilepicture', 'ProfilesController@editprofilePic')->name('chang
 //change pass
 Route::post('/settings','ProfilesController@changePassword')->name('changePassword');
 
-
 //Get Region
 Route::get('/register','GetRegionController@getRegion')->name('register');
 Route::get('/getStates/{id}','GetRegionController@getStates');
-
 
 //register
 Route::post('profile', 'ProfilesController@changeprofile')->name('changeprofile');
@@ -44,6 +40,7 @@ Route::post('profile', 'ProfilesController@changeprofile')->name('changeprofile'
 //submission
 Route::get('/submit', 'SubmissionsController@submit')->name('submission');
 Route::get('/submissions', 'SubmissionsController@index')->name('entries');
+
 //submiting song
 Route::post('/submit_form', 'SongsController@submitsong');
 
@@ -52,8 +49,14 @@ Route::get('createcaptcha', 'CaptchaController@create');
 Route::post('captcha', 'CaptchaController@captchaValidate');
 Route::get('refreshcaptcha', 'SongsController@refreshCaptcha');
 
+});
+
+Route::group(['middleware' => 'admin'], function(){
+
 //Admin Login Page
-Route::get('/admin_login', 'admin\AdminController@indexAdminLogin')->name('AdminLogin');
+Route::get('/admin_login', 'Admin\AdminAuth\AdminLoginController@showLoginForm')->name('AdminLogin');
+Route::post('/admin_login', 'Admin\AdminAuth\AdminLoginController@login')->name('AdminLoginSubmit');
+// Route::get('/standardadmin_login', 'admin\AdminController@indexStandardAdminLogin')->name('StandardAdminLogin');
 
 //Admin Dashboard
 Route::get('/admin_dashboard', 'admin\AdminController@index')->name('AdminDashboard');
@@ -72,5 +75,4 @@ Route::get('/manage_songwriters', 'admin\AdminController@indexManageSongwriters'
 
 //Manage Song Entries Dashbaord
 Route::get('/manage_song_entries', 'admin\AdminController@indexManageSongEntries')->name('ManageSongEntries');
-
 });
