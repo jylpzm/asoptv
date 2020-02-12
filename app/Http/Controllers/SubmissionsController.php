@@ -35,8 +35,9 @@ class SubmissionsController extends Controller
         return DataTables::of($entries)
         ->editColumn('status', function($entries){
           if ($entries->status == 0) return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
-          if ($entries->status == 1) return '<span style="color: green">Approved</span>';
-          if ($entries->status == 2) return '<span style="color: red">Not Approved</span>';
+          if ($entries->status == 1) return '<span style="color: blue; font-weight: bold">Processing</span>';
+          if ($entries->status == 2) return '<span style="color: green; font-weight: bold">Approved</span>';
+          if ($entries->status == 3) return '<span style="color: red; font-weight: bold">Not Approved</span>';
 
           
         })

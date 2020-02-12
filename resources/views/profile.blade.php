@@ -104,14 +104,10 @@
                     <input name="street_add" id="streetadd" type="text" class="form-control form-control-user"  placeholder="Put Your Complete Address here" disabled="" value="{{ Auth::user()->street_add }}">
                 </div>
                 <div>
-                  @foreach($phregions as $phregion)
-                  	<input class="form-control form-control-user" value="{{ $phregion->region_description }}" readonly="">
+                   @foreach($phregions as $phregion)
+                    <label class="form-control form-control-user" readonly="">{{ $phregion->region_description }}</label>
+                    <label class="form-control form-control-user" readonly="">{{ $phregion->province_description }}</label>
                   @endforeach
-
-                  @foreach($phprovinces as $phprovince)
-                 	<input class="form-control form-control-user" value="{{ $phprovince->province_description }}" readonly="">
-                  @endforeach
-                 </select>
                </div><br/>
                 </a>
                 <div class="form-group">

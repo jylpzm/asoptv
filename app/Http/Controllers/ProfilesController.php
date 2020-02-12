@@ -10,6 +10,7 @@ use Validator;
 use App\User;
 use App\PhilippineRegion;
 use App\PhilippineProvince;
+use DB;
 
 class ProfilesController extends Controller
 {
@@ -20,19 +21,29 @@ class ProfilesController extends Controller
     }
 
     public function profile(){
-
-        $phregions = PhilippineRegion::join('users', "philippine_regions.region_code", "=", "users.region")
+        $phregions = DB::table('users')
+        ->join('philippine_regions', "philippine_regions.region_code", "=", "users.region")
+        ->join('philippine_provinces', "philippine_provinces.province_code", "=", "users.province")
+        ->where('philippine_provinces.province_code', Auth::user()->province)
         ->where('philippine_regions.region_code', Auth::user()->region)
-        ->select('philippine_regions.region_description')
-        ->get(); 
+        ->select('philippine_provinces.province_description', 'philippine_regions.region_description')
+
+        ->get();
+
+        // $phregions = PhilippineRegion::join('users', "philippine_regions.region_code", "=", "users.region")
+        // ->join('users', "philippine_provinces.province_code", "=", "users.province")
+        // ->where('philippine_regions.region_code', Auth::user()->region)
+        // ->select('philippine_regions.region_description')
+        // ->get(); 
         // return $phregions;
         
-        $phprovinces = PhilippineProvince::join('users', "philippine_provinces.province_code", "=", "users.province")
-        ->where('philippine_provinces.province_code', Auth::user()->province)
-        ->select('philippine_provinces.province_description')
-        ->get(); 
+        // $phprovinces = PhilippineProvince::join('users', "philippine_provinces.province_code", "=", "users.province")
+        // ->where('philippine_provinces.province_code', Auth::user()->province)
+        // ->select('philippine_provinces.province_description')
+        // ->get(); 
         // return $phprovinces;
-        return view('profile', compact("phregions", "phprovinces"));
+        // return $shares;
+        return view('profile', compact("phregions"));
     }
 
     public function settings(){
@@ -41,16 +52,16 @@ class ProfilesController extends Controller
 
     public function changeprofile(Request $request){
 
-       $validator = validator::make($request->all(),[
-        'contact_num' => 'required|min:10|max:20',
-    ]);
+           $validator = validator::make($request->all(),[
+            'contact_num' => 'required|min:10|max:20',
+        ]);
 
-        if($validator->fails()){
-            return back()->withErrors($validator)->withInput();
-        
-        }
-    $this->Profile->changeProfile($request);
-    return redirect()->back()->with("success","Profile Details changed successfully!");
+            if($validator->fails()){
+                return back()->withErrors($validator)->withInput();
+            
+            }
+        $this->Profile->changeProfile($request);
+        return redirect()->back()->with("success","Profile Details changed successfully!");
 
 }
 

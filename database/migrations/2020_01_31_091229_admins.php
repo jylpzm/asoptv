@@ -16,6 +16,7 @@ class Admins extends Migration
         Schema::create('admins', function (Blueprint $table)
         {
             $table->increments('id');
+            $table->string('role_id')->nullable();
             $table->string('full_name')->nullable();
             $table->string('admin_position')->nullable();
             $table->string('email_address')->nullable();
