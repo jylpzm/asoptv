@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
 
 Eloquent::unguard();
 
-        //disable foreign key check for this connection before running seeders
-        // DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        $this->call('PhilippineCitiesTableSeeder');
+
+
         $this->call('PhilippineProvincesTableSeeder');
-        $this->call('PhilippineRegionsTableSeeder');    
+        $this->call('PhilippineRegionsTableSeeder');
+        $this->call(AdminsTableSeeder::class);    
         // $this->call('UsersTableSeeder');
         // $this->call('PostsTableSeeder');
 

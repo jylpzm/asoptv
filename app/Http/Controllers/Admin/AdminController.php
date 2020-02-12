@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Admin\AdminModel;
+use Illuminate\Http\Request;
 use App\User;
 use App\Song;
-use Illuminate\Http\Request;
 use Validator;
 use Auth;
-use Illuminate\Support\Facades\DB;
+use DataTables;
+use DB;
 
 class AdminController extends Controller
 {
@@ -46,14 +47,21 @@ class AdminController extends Controller
         return view('admin/ManageSongwriters')->with('users', $users);
     }
 
-    public function indexManageSongEntries()
+    public function indexManageSongEntries(Request $request)
     {
-        $songs = DB::table('songs')
-            ->join('users', 'users.user_id', '=', 'songs.user_id')
-            ->select('users.*', 'songs.*')
-            ->get();
 
-        return view('admin/ManageSongEntries')->with('songs', $songs);
+        if($request->ajax())
+      {
+           $entries = Song::join('users', 'users.user_id', '=', 'songs.user_id')
+           ->get(); 
+            return DataTables::of($entries)
+            ->editColumn('status', function($entries){
+              if (empty($entries->contact_num)) return '<span style="color: gray; font-weight: bold">No Contact Number</span>';
+            })
+            ->rawColumns(['status'])
+            ->make(true);
+      }
+      return view('admin/ManageSongEntries', compact('entries'));
     }
 
     public function createAdmin(Request $request)

@@ -46,9 +46,7 @@
 	<link rel="stylesheet" href="{{asset('adminlte/bower_components/Ionicons/css/ionicons.min.css')}}">
 
 	<!-- DataTables -->
-	<!-- <link rel="stylesheet" href="{{asset('adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}"> -->
-	<link rel="stylesheet" type="text/css" href="{{asset('datatables/dataTables.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('dataTables.min.js')}}">
+	<link href="{{ asset("/vendor/datatables/dataTables.bootstrap4.min.css") }}" rel="stylesheet">
 </head>
 
 
@@ -296,6 +294,30 @@
 										<p>Manage Song Entries</p>
 									</a>
 							</li>
+							<li class="nav-item">
+									<a href="{{ route('ManageSongEntries') }}" class="nav-link">
+										<i class="fas fa-file-audio-o nav-icon"></i>
+										<p>Pending Entries</p>
+									</a>
+							</li>
+							<li class="nav-item">
+									<a href="{{ route('ManageSongEntries') }}" class="nav-link">
+										<i class="fas fa-file-audio-o nav-icon"></i>
+										<p>Processing Entries</p>
+									</a>
+							</li>
+							<li class="nav-item">
+									<a href="{{ route('ManageSongEntries') }}" class="nav-link">
+										<i class="fas fa-file-audio-o nav-icon"></i>
+										<p>Approved Entries</p>
+									</a>
+							</li>
+							<li class="nav-item">
+									<a href="{{ route('ManageSongEntries') }}" class="nav-link">
+										<i class="fas fa-file-audio-o nav-icon"></i>
+										<p>Not Approved Entries</p>
+									</a>
+							</li>
 					<!-- <li class="nav-item">
 						<a href="adminlte/pages/charts/flot.html" class="nav-link">
 						<i class="far fa-circle nav-icon"></i>
@@ -385,10 +407,9 @@
 	<script src="{{asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 
 	<!-- DataTables -->
-	<!-- <script src="{{asset('adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script> -->
-	<!-- <script src="{{asset('adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script> -->
-	<script type="text/javascript" src="{{asset('datatables/dataTables.min.css')}}"></script>
-	<script type="text/javascript" src="{{asset('datatables/dataTables.min.js')}}"></script>
+	<script src="{{ asset("/vendor/datatables/jquery.dataTables.min.js") }}"></script>
+	<script src="{{ asset("/vendor/datatables/dataTables.bootstrap4.min.js") }}"></script>
+	<!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script> -->
 
 	<!-- SlimScroll -->
 	<script src="{{asset('adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
@@ -405,24 +426,5 @@
 	<!-- AdminLTE for demo purposes -->
 	<script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
 
-	<script>
-	  $(function () {
-	    $('#adminTable').DataTable()
-	  })
-	</script>
-
-	<!-- <script>
-	  $(function () {
-	    $('#adminTable').DataTable()
-	    $('#adminTable').DataTable({
-	      'paging'      : true,
-	      'lengthChange': false,
-	      'searching'   : false,
-	      'ordering'    : true,
-	      'info'        : true,
-	      'autoWidth'   : false
-	    })
-	  })
-	</script> -->
 </body>
 </html>

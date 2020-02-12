@@ -49,15 +49,8 @@ Route::get('createcaptcha', 'CaptchaController@create');
 Route::post('captcha', 'CaptchaController@captchaValidate');
 Route::get('refreshcaptcha', 'SongsController@refreshCaptcha');
 
-});
-
-Route::group(['middleware' => 'admin'], function(){
-
-//Admin Login Page
-Route::get('/admin_login', 'Admin\AdminAuth\AdminLoginController@showLoginForm')->name('AdminLogin');
-Route::post('/admin_login', 'Admin\AdminAuth\AdminLoginController@login')->name('AdminLoginSubmit');
-// Route::get('/standardadmin_login', 'admin\AdminController@indexStandardAdminLogin')->name('StandardAdminLogin');
-
+//**** ADMIN SDE ****//
+//
 //Admin Dashboard
 Route::get('/admin_dashboard', 'admin\AdminController@index')->name('AdminDashboard');
 

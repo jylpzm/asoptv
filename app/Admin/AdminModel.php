@@ -9,7 +9,7 @@ use Hash;
 class AdminModel extends Model
 {
     protected $table = 'admins';
-    protected $fillable = ['full_name','admin_position','email_address','contact_num','admin_icon','admin_password'];
+    protected $fillable = ['full_name','admin_position','email_address','contact_num','admin_icon','admin_password','role_id'];
 
     public function newAdmin($request)
     {
