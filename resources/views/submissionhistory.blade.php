@@ -53,11 +53,11 @@
         </div>
         <!-- /.container-fluid -->
 
-      </div>
       <!-- End of Main Content -->
 
 @endsection
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="{{ asset("/vendor/jquery/jquery.min.js") }}"></script>
 <script>
          $(function() {
                $('#table').DataTable({
@@ -73,4 +73,4 @@
                      ]
             });
          });
-         </script>
+</script>

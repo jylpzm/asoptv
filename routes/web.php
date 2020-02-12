@@ -51,6 +51,8 @@ Route::get('createcaptcha', 'CaptchaController@create');
 Route::post('captcha', 'CaptchaController@captchaValidate');
 Route::get('refreshcaptcha', 'SongsController@refreshCaptcha');
 
+//**** ADMIN SDE ****//
+//
 //Admin Dashboard
 Route::get('/admin_dashboard', 'admin\AdminController@index')->name('AdminDashboard');
 
@@ -68,5 +70,7 @@ Route::get('/manage_songwriters', 'admin\AdminController@indexManageSongwriters'
 
 //Manage Song Entries Dashbaord
 Route::get('/manage_song_entries', 'admin\AdminController@indexManageSongEntries')->name('ManageSongEntries');
+
+
 
 });

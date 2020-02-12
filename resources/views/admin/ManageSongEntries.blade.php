@@ -15,60 +15,72 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-
-        <!-- Main row -->
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-                  <!-- <br />
-                      <br />
-                          <a href="" class="btn btn-primary" style="float: right;"></a>
-                      <br />
-                  <br /> -->
-                  <table class="table table-bordered table-striped" id="adminTable">
-                    <thead>
-                      <tr>
-                        <th>No.</th>
+                  <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Song Entries</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="table" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
                         <th>Song Title</th>
-                        <th>Songwriter</th>
                         <th>Genre</th>
+                        <th>Songwriter</th>
+                        <th>Lyrics</th>
+                        <th>Audio</th>
                         <th>Submission Date</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-
-                    <?php $num = 1; ?>
-                    @foreach($songs as $song)
-                      <tr>
-                        <td>{{$num++}}</td>
-                        <td>{{$song->song_title}}</td>
-                        <td>{{$song->song_genre}}</td>
-                        <!-- <td>{{$song->song_position}}</td>
-                        <td>{{$song->email_address}}</td>
-                        <td>{{$song->contact_num}}</td> -->
-                        <td>
-                          <div class="">
-                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Action</button>
-                            
-                            <ul class="dropdown-menu">
-                              <li><a type="button" class="btn btn-primary" onclick="">Edit</a></li>
-                              <li><a type="button" class="btn btn-danger" onclick="">Remove</a></li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                    @endforeach
-
-                  </table>
+                        <th>Contact Number</th>
+                    </tr>
+                  </thead>
+                  
+{{--                   @foreach($entries as $entry)
+                  <tbody>
+                    <tr>
+                      <td>{{ $entry->song_title }}</td>
+                      <td>{{ $entry->notes }}</td>
+                      <td>{{ $entry->created_at }}</td>
+                      <td>{{ $entry->AdminRemark }}</td>
+                      {{ $status = $entry->status }}
+                      <td>
+                        @if($status == 1)
+                          <span style="color: green">Approved</span>
+                        @elseif($status == 2)
+                          <span style="color: red">Not Approved</span>
+                        @elseif($status == 0)
+                          <span style="color: gray">Waiting For Approval</span>
+                        @endif
+                      </td>
+                  @endforeach   --}}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
         <!-- /.row (main row) -->
   
       </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+
 @endsection
+<script src="{{ asset("/vendor/jquery/jquery.min.js") }}"></script>
+<script>
+         $(function() {
+               $('#table').DataTable({
+               processing: true,
+               serverSide: true,
+               ajax: '{{ route('ManageSongEntries') }}',
+               columns: [
+                        { data: 'song_id', name: 'song_id' },
+                        { data: 'song_title', name: 'song_title' },
+                        { data: 'song_genre', name: 'song_genre' },
+                        { data: 'first_name',name: 'first_name'},
+                        { data: 'lyrics_file', name: 'lyrics_file' },
+                        { data: 'audio_file', name: 'audio_file' },
+                        { data: 'created_at', name: 'created_at' },
+                        { data: 'contact_num', name: 'contact_num' },
+                     ]
+            });
+         });
+</script>
