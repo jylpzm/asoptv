@@ -12,9 +12,6 @@
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
 
-	<!-- Ionicons -->
-	<link rel="stylesheet" href="{{asset('adminlte/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
-
 	<!-- Tempusdominus Bbootstrap 4 -->
 	<link rel="stylesheet" href="{{asset('adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
 
@@ -22,7 +19,7 @@
 	<link rel="stylesheet" href="{{asset('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 
 	<!-- JQVMap -->
-	<link rel="stylesheet" href="{{asset('adminlte/plugins/jqvmap/jqvmap.min.css')}}">
+	{{-- <link rel="stylesheet" href="{{asset('adminlte/plugins/jqvmap/jqvmap.min.css')}}"> --}}
 
 	<!-- Theme style -->
 	<link rel="stylesheet" href="{{asset('adminlte/dist/css/adminlte.min.css')}}">
@@ -39,11 +36,8 @@
 	<!-- Google Font: Source Sans Pro -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700')}}">
 
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="{{asset('adminlte/bower_components/font-awesome/css/font-awesome.min.css')}}">
-
 	<!-- Ionicons -->
-	<link rel="stylesheet" href="{{asset('adminlte/bower_components/Ionicons/css/ionicons.min.css')}}">
+	{{-- <link rel="stylesheet" href="{{asset('adminlte/bower_components/Ionicons/css/ionicons.min.css')}}"> --}}
 
 	<!-- DataTables -->
 	<link href="{{ asset("/vendor/datatables/dataTables.bootstrap4.min.css") }}" rel="stylesheet">
@@ -295,41 +289,29 @@
 									</a>
 							</li>
 							<li class="nav-item">
-									<a href="{{ route('ManageSongEntries') }}" class="nav-link">
+									<a href="{{ route('PendingEntries') }}" class="nav-link">
 										<i class="fas fa-file-audio-o nav-icon"></i>
 										<p>Pending Entries</p>
 									</a>
 							</li>
 							<li class="nav-item">
-									<a href="{{ route('ManageSongEntries') }}" class="nav-link">
+									<a href="{{ route('ProcessingEntries') }}" class="nav-link">
 										<i class="fas fa-file-audio-o nav-icon"></i>
 										<p>Processing Entries</p>
 									</a>
 							</li>
 							<li class="nav-item">
-									<a href="{{ route('ManageSongEntries') }}" class="nav-link">
+									<a href="{{ route('ApprovedEntries') }}" class="nav-link">
 										<i class="fas fa-file-audio-o nav-icon"></i>
 										<p>Approved Entries</p>
 									</a>
 							</li>
 							<li class="nav-item">
-									<a href="{{ route('ManageSongEntries') }}" class="nav-link">
+									<a href="{{ route('NonapprovedEntries') }}" class="nav-link">
 										<i class="fas fa-file-audio-o nav-icon"></i>
-										<p>Not Approved Entries</p>
+										<p>No Approved Entries</p>
 									</a>
 							</li>
-					<!-- <li class="nav-item">
-						<a href="adminlte/pages/charts/flot.html" class="nav-link">
-						<i class="far fa-circle nav-icon"></i>
-						<p>Flot</p>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="adminlte/pages/charts/inline.html" class="nav-link">
-						<i class="far fa-circle nav-icon"></i>
-						<p>Inline</p>
-						</a>
-					</li> -->
 					</ul>
 				</li>
 
@@ -347,7 +329,10 @@
 			</div>
 			<!-- /.sidebar -->
 		</aside>
-		@yield('content')
+		<div class="secontent" class="container-fluid">
+          <!-- Page Heading -->
+         @yield('content')
+      </div>
 
 	
 		<footer class="main-footer">
@@ -381,8 +366,8 @@
 	<script src="{{asset('adminlte/plugins/sparklines/sparkline.js')}}"></script>
 
 	<!-- JQVMap -->
-	<script src="{{asset('adminlte/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-	<script src="{{asset('adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+	{{-- <script src="{{asset('adminlte/plugins/jqvmap/jquery.vmap.min.js')}}"></script> --}}
+	{{-- <script src="{{asset('adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script> --}}
 
 	<!-- jQuery Knob Chart -->
 	<script src="{{asset('adminlte/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
@@ -401,10 +386,10 @@
 	<script src="{{asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 
 	<!-- jQuery 3 -->
-	<script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}"></script>
+	{{-- <script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}"></script> --}}
 
 	<!-- Bootstrap 3.3.7 -->
-	<script src="{{asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+	{{-- <script src="{{asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script> --}}
 
 	<!-- DataTables -->
 	<script src="{{ asset("/vendor/datatables/jquery.dataTables.min.js") }}"></script>
@@ -412,16 +397,16 @@
 	<!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script> -->
 
 	<!-- SlimScroll -->
-	<script src="{{asset('adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
+	{{-- <script src="{{asset('adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script> --}}
 
 	<!-- FastClick -->
-	<script src="{{asset('adminlte/bower_components/fastclick/lib/fastclick.js')}}"></script>
+	{{-- <script src="{{asset('adminlte/bower_components/fastclick/lib/fastclick.js')}}"></script> --}}
 
 	<!-- AdminLTE App -->
 	<script src="{{asset('adminlte/dist/js/adminlte.js')}}"></script>
 
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="{{asset('adminlte/dist/js/pages/dashboard.js')}}"></script>
+	{{-- <script src="{{asset('adminlte/dist/js/pages/dashboard.js')}}"></script> --}}
 
 	<!-- AdminLTE for demo purposes -->
 	<script src="{{asset('adminlte/dist/js/demo.js')}}"></script>

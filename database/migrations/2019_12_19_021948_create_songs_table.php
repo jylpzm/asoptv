@@ -19,7 +19,7 @@ class CreateSongsTable extends Migration
             $table->string('song_title');
             $table->binary('audio_file');
             $table->binary('lyrics_file');
-            $table->string('notes');
+            $table->longText('notes');
             $table->string('song_genre')->nullable();
             $table->string('AdminRemark')->default("hi");
             $table->integer('isRead')->nullable();

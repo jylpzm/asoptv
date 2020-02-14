@@ -16,7 +16,6 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin');
         $this->AdminModel = new AdminModel;
     }
 
@@ -47,18 +46,132 @@ class AdminController extends Controller
         return view('admin/ManageSongwriters')->with('users', $users);
     }
 
+    public function PendingEntries(Request $request)
+    {   
+
+        if($request->ajax())
+      {
+           $entries = Song::join('users', 'users.user_id', '=', 'songs.user_id')
+            ->where('songs.status', '=', '0')
+            ->get(); 
+            return DataTables::of($entries)
+            ->editColumn('first_name', function($entries){
+                return $entries->first_name . " " . $entries->last_name;
+            })
+            ->editColumn('status', function($entries){
+          if ($entries->status == 0) return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
+          if ($entries->status == 1) return '<span style="color: blue; font-weight: bold">Processing</span>';
+          if ($entries->status == 2) return '<span style="color: green; font-weight: bold">Approved</span>';
+          if ($entries->status == 3) return '<span style="color: red; font-weight: bold">Not Approved</span>';
+      })
+            ->addColumn('actions', function($row){
+                $btn = '<center><a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View Details</a></center>';
+                return $btn;
+            })->rawColumns(['actions','status'])
+            ->make(true);
+      }
+      return view('admin/PendingEntries', compact('entries'));
+    }
+
+    public function ProcessingEntries(Request $request)
+    {
+        if($request->ajax())
+      {
+           $entries = Song::join('users', 'users.user_id', '=', 'songs.user_id')
+            ->where('songs.status', '=', '1')
+            ->get(); 
+            return DataTables::of($entries)
+            ->editColumn('first_name', function($entries){
+                return $entries->first_name . " " . $entries->last_name;
+            })
+            ->editColumn('status', function($entries){
+          if ($entries->status == 0) return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
+          if ($entries->status == 1) return '<span style="color: blue; font-weight: bold">Processing</span>';
+          if ($entries->status == 2) return '<span style="color: green; font-weight: bold">Approved</span>';
+          if ($entries->status == 3) return '<span style="color: red; font-weight: bold">Not Approved</span>';
+      })
+            ->addColumn('actions', function($row){
+                $btn = '<center><a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View Details</a></center>';
+                return $btn;
+            })->rawColumns(['actions','status'])
+            ->make(true);
+      }
+      return view('admin/ProcessingEntries', compact('entries'));
+    }
+
+    public function ApprovedEntries(Request $request)
+    {
+        if($request->ajax())
+      {
+           $entries = Song::join('users', 'users.user_id', '=', 'songs.user_id')
+            ->where('songs.status', '=', '2')
+            ->get(); 
+            return DataTables::of($entries)
+            ->editColumn('first_name', function($entries){
+                return $entries->first_name . " " . $entries->last_name;
+            })
+            ->editColumn('status', function($entries){
+          if ($entries->status == 0) return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
+          if ($entries->status == 1) return '<span style="color: blue; font-weight: bold">Processing</span>';
+          if ($entries->status == 2) return '<span style="color: green; font-weight: bold">Approved</span>';
+          if ($entries->status == 3) return '<span style="color: red; font-weight: bold">Not Approved</span>';
+      })
+            ->addColumn('actions', function($row){
+                $btn = '<center><a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View Details</a></center>';
+                return $btn;
+            })->rawColumns(['actions','status'])
+            ->make(true);
+      }
+      return view('admin/ApprovedEntries', compact('entries'));
+    }
+
+    public function NonapprovedEntries(Request $request)
+    {
+        if($request->ajax())
+      {
+           $entries = Song::join('users', 'users.user_id', '=', 'songs.user_id')
+            ->where('songs.status', '=', '3')
+            ->get(); 
+            return DataTables::of($entries)
+            ->editColumn('first_name', function($entries){
+                return $entries->first_name . " " . $entries->last_name;
+            })
+            ->editColumn('status', function($entries){
+          if ($entries->status == 0) return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
+          if ($entries->status == 1) return '<span style="color: blue; font-weight: bold">Processing</span>';
+          if ($entries->status == 2) return '<span style="color: green; font-weight: bold">Approved</span>';
+          if ($entries->status == 3) return '<span style="color: red; font-weight: bold">Not Approved</span>';
+      })
+            ->addColumn('actions', function($row){
+                $btn = '<center><a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View Details</a></center>';
+                return $btn;
+            })->rawColumns(['actions','status'])
+            ->make(true);
+      }
+      return view('admin/NotApproved', compact('entries'));
+    }
+
     public function indexManageSongEntries(Request $request)
     {
 
         if($request->ajax())
       {
            $entries = Song::join('users', 'users.user_id', '=', 'songs.user_id')
-           ->get(); 
+            ->get(); 
             return DataTables::of($entries)
-            ->editColumn('status', function($entries){
-              if (empty($entries->contact_num)) return '<span style="color: gray; font-weight: bold">No Contact Number</span>';
+            ->editColumn('first_name', function($entries){
+                return $entries->first_name . " " . $entries->last_name;
             })
-            ->rawColumns(['status'])
+            ->editColumn('status', function($entries){
+          if ($entries->status == 0) return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
+          if ($entries->status == 1) return '<span style="color: blue; font-weight: bold">Processing</span>';
+          if ($entries->status == 2) return '<span style="color: green; font-weight: bold">Approved</span>';
+          if ($entries->status == 3) return '<span style="color: red; font-weight: bold">Not Approved</span>';
+      })
+            ->addColumn('actions', function($row){
+                $btn = '<center><a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View Details</a></center>';
+                return $btn;
+            })->rawColumns(['actions','status'])
             ->make(true);
       }
       return view('admin/ManageSongEntries', compact('entries'));

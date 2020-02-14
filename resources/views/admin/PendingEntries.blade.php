@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Manage Song Entries</h1>
+            <h1 class="m-0 text-dark">Pending Song Entries</h1>
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -19,7 +19,7 @@
                   <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Song Entries</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Pending Entries</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -50,7 +50,7 @@
                $('#table').DataTable({
                processing: true,
                serverSide: true,
-               ajax: '{{ route('ManageSongEntries') }}',
+               ajax: '{{ route('PendingEntries') }}',
                columns: [
                         { data: 'song_id', name: 'song_id' },
                         { data: 'first_name', name: 'first_name'},
