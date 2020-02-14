@@ -71,4 +71,8 @@ Route::get('/songwriter_details', 'admin\AdminController@SongwriterDetails')->na
 
 //Manage Song Entries Dashbaord
 Route::get('/manage_song_entries', 'admin\AdminController@indexManageSongEntries')->name('ManageSongEntries');
+Route::get('/pending_entries', 'admin\AdminController@PendingEntries')->name('PendingEntries');
+Route::get('/processing_entries', 'admin\AdminController@ProcessingEntries')->name('ProcessingEntries');
+Route::get('/approved_entries', 'admin\AdminController@ApprovedEntries')->name('ApprovedEntries');
+Route::get('/nonapproved_entries', 'admin\AdminController@NonapprovedEntries')->name('NonapprovedEntries');
 });
