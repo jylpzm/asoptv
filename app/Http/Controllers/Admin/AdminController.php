@@ -16,7 +16,7 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        // $this->middleware('auth:admin');
         $this->AdminModel = new AdminModel;
     }
 
@@ -45,6 +45,11 @@ class AdminController extends Controller
     {
         $users = User::all();
         return view('admin/ManageSongwriters')->with('users', $users);
+    }
+
+    public function SongwriterDetails()
+    {
+      return view('admin/SongwriterDetails');
     }
 
     public function indexManageSongEntries(Request $request)

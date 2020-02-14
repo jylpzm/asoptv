@@ -47,6 +47,9 @@
 
 	<!-- DataTables -->
 	<link href="{{ asset("/vendor/datatables/dataTables.bootstrap4.min.css") }}" rel="stylesheet">
+
+	<!-- AdminLTE Skins -->
+	<link rel="stylesheet" href="{{asset('adminlte/dist/css/skins/_all-skins.min.css')}}">
 </head>
 
 
