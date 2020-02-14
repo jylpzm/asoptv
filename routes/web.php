@@ -67,7 +67,7 @@ Route::post('/create_new_admin', 'admin\AdminController@createAdmin')->name('Cre
 Route::get('/manage_songwriters', 'admin\AdminController@indexManageSongwriters')->name('ManageSongwriters');
 
 //Songwriter Details
-Route::get('/songwriter_details', 'admin\AdminController@SongwriterDetails')->name('SongwriterDetails');
+Route::get('/songentry/detail/{song_id}', 'admin\AdminController@songentrydetails')->name('SongwriterDetails');
 
 //Manage Song Entries Dashbaord
 Route::get('/manage_song_entries', 'admin\AdminController@indexManageSongEntries')->name('ManageSongEntries');
@@ -75,4 +75,7 @@ Route::get('/pending_entries', 'admin\AdminController@PendingEntries')->name('Pe
 Route::get('/processing_entries', 'admin\AdminController@ProcessingEntries')->name('ProcessingEntries');
 Route::get('/approved_entries', 'admin\AdminController@ApprovedEntries')->name('ApprovedEntries');
 Route::get('/nonapproved_entries', 'admin\AdminController@NonapprovedEntries')->name('NonapprovedEntries');
+
+//approval of entries
+Route::post('/approval_entry/{song_id}', 'admin\AdminController@approvalEntries');
 });

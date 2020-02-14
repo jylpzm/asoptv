@@ -43,7 +43,7 @@
 	<link href="{{ asset("/vendor/datatables/dataTables.bootstrap4.min.css") }}" rel="stylesheet">
 
 	<!-- AdminLTE Skins -->
-	<link rel="stylesheet" href="{{asset('adminlte/dist/css/skins/_all-skins.min.css')}}">
+	{{-- <link rel="stylesheet" href="{{asset('adminlte/dist/css/skins/_all-skins.min.css')}}"> --}}
 </head>
 
 
@@ -287,7 +287,7 @@
 							<ul class="nav nav-treeview">
 							<li class="nav-item">
 									<a href="{{ route('ManageSongEntries') }}" class="nav-link">
-										<i class="nav-icon fas fa-list"></i>
+										<i class="nav-icon fas"></i>
 										<p>Manage Song Entries</p>
 									</a>
 							</li>

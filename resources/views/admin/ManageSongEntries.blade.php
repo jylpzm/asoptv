@@ -58,7 +58,7 @@
                         { data: 'song_genre', name: 'song_genre' },
                         { data: 'created_at', name: 'created_at' },
                         { data: 'status', name: 'status' },
-                        { data: 'actions', name: 'actions', orderable: false, searchable: false  },
+                        { data: 'action', name: 'action', orderable: false, searchable: false  },
                      ]
             });
          });
