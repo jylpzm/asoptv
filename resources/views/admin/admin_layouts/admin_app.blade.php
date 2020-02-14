@@ -284,7 +284,7 @@
 							<ul class="nav nav-treeview">
 							<li class="nav-item">
 									<a href="{{ route('ManageSongEntries') }}" class="nav-link">
-										<i class="fas fa-file-audio-o nav-icon"></i>
+										<i class="nav-icon fas fa-list"></i>
 										<p>Manage Song Entries</p>
 									</a>
 							</li>
