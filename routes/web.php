@@ -66,6 +66,9 @@ Route::post('/create_new_admin', 'admin\AdminController@createAdmin')->name('Cre
 //Manage Songwriters Dashboard
 Route::get('/manage_songwriters', 'admin\AdminController@indexManageSongwriters')->name('ManageSongwriters');
 
+//Songwriter Details
+Route::get('/songwriter_details', 'admin\AdminController@SongwriterDetails')->name('SongwriterDetails');
+
 //Manage Song Entries Dashbaord
 Route::get('/manage_song_entries', 'admin\AdminController@indexManageSongEntries')->name('ManageSongEntries');
 Route::get('/pending_entries', 'admin\AdminController@PendingEntries')->name('PendingEntries');
