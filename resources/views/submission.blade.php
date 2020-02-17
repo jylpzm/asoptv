@@ -42,7 +42,7 @@
           <hr>
           <div class="form-group mt-3">
             <label><strong>Upload Song</strong></label>
-            <input type="file" name="audio_file" accept=".mp3" id="audio_file">>
+            <input type="file" name="audio_file" accept=".mp3" id="audio_file">
             <p class="text-danger">**Only .MP3 file format is accepted.</p>
           </div>
           <hr>

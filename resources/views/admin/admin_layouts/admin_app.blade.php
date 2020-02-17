@@ -242,7 +242,13 @@
 							<li class="nav-item">
 									<a href="{{ route('NonapprovedEntries') }}" class="nav-link">
 										<i class="fas fa-file-audio-o nav-icon"></i>
-										<p>No Approved Entries</p>
+										<p>Not Approved Entries</p>
+									</a>
+							</li>
+							<li class="nav-item">
+									<a href="{{ route('ManageGenre') }}" class="nav-link">
+										<i class="fas fa-file-audio-o nav-icon"></i>
+										<p>Manage Song Genres</p>
 									</a>
 							</li>
 					</ul>

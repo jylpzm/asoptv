@@ -1,4 +1,3 @@
-
 @extends('admin/admin_layouts.admin_app')
 
 @section('content')
@@ -23,21 +22,21 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="table" width="100%" cellspacing="0">
+                <table class="table table-bordered table-striped" id="table" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>No.</th>
-                        <th>Songwriter</th>
-                        <th>Song Title</th>
-                        <th>Genre</th>
-                        <th>Submission Date</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                      <th>User ID</th>
+                      <th>Songwriter</th>
+                      <th>Song Title</th>
+                      <th>Genre</th>
+                      <th>Submission Date</th>
+                      <th>Status</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                    <tfoot>
                       <tr>
-                          <th>No.</th>
+                        <th>User ID</th>
                         <th>Songwriter</th>
                         <th>Song Title</th>
                         <th>Genre</th>

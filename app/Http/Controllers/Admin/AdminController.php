@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Song;
 use App\Admin\AdminModel;
+use App\Admin\GenreModel;
 use App\PhilippinesRegion;
 use Validator;
 use Auth;
@@ -19,6 +20,7 @@ class AdminController extends Controller
     {
         // $this->middleware('auth:admin');
         $this->AdminModel = new AdminModel;
+        $this->GenreModel = new GenreModel;
     }
 
     public function index()
@@ -48,17 +50,18 @@ class AdminController extends Controller
         return view('admin/ManageSongwriters')->with('users', $users);
     }
 
-//SONG ENTRY DETAILS
-    public function songentrydetails($user_id)
-    { 
-        $songentries = Song::join('users','songs.user_id', '=' , 'users.user_id')
-        ->where('song_id',$user_id)
-        ->get();
+    //SONG ENTRY DETAILS
+    // public function songentrydetails($user_id)
+    // { 
+    //     $songentries = Song::join('users','songs.user_id', '=' , 'users.user_id')
+    //     ->where('song_id',$user_id)
+    //     ->get();
 
-        // return $songentries;
-        return view('admin/SongwriterDetails',compact('songentries'));
-    }
-//INDEXXXX
+    //     // return $songentries;
+    //     return view('admin/SongwriterDetails',compact('songentries'));
+    // }
+
+    //INDEXXXX
     public function indexManageSongEntries(Request $request)
     {
 
@@ -89,7 +92,7 @@ class AdminController extends Controller
                 }
             })
             ->addColumn('action', function($entries){
-                $btn = '<center><a href="/songentry/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
+                $btn = '<center><a href="/account_information/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
                 return $btn;
             })->rawColumns(['action','status','created_at'])
 
@@ -100,7 +103,7 @@ class AdminController extends Controller
       return view('admin/ManageSongEntries', compact('entries'));
     }
 
-//PENDING
+    //PENDING
     public function PendingEntries(Request $request)
     {   
 
@@ -128,14 +131,15 @@ class AdminController extends Controller
                 }
       })
             ->addColumn('actions', function($entries){
-                $btn = '<center><a href="/songentry/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
+                $btn = '<center><a href="/account_information/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
                 return $btn;
             })->rawColumns(['actions','status'])
             ->make(true);
       }
       return view('admin/PendingEntries', compact('entries'));
     }
-//PROCESS
+    
+    //PROCESS
     public function ProcessingEntries(Request $request)
     {
         if($request->ajax())
@@ -162,15 +166,16 @@ class AdminController extends Controller
                 }
       })
             ->addColumn('actions', function($entries){
-                $btn = '<center><a href="/songentry/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
+                $btn = '<center><a href="/account_information/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
                 return $btn;
             })->rawColumns(['actions','status'])
             ->make(true);
       }
       return view('admin/ProcessingEntries', compact('entries'));
      }
-//APPROVED
-     public function ApprovedEntries(Request $request)
+    
+    //APPROVED
+    public function ApprovedEntries(Request $request)
     {
         if($request->ajax())
       {
@@ -196,14 +201,15 @@ class AdminController extends Controller
                 }
       })
             ->addColumn('actions', function($entries){
-                $btn = '<center><a href="/songentry/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
+                $btn = '<center><a href="/account_information/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
                 return $btn;
             })->rawColumns(['actions','status'])
             ->make(true);
       }
       return view('admin/ApprovedEntries', compact('entries'));
     }
-//NONAPPROVED
+
+    //NONAPPROVED
     public function NonapprovedEntries(Request $request)
     {
         if($request->ajax())
@@ -230,7 +236,7 @@ class AdminController extends Controller
                 }
       })
             ->addColumn('actions', function($entries){
-                $btn = '<center><a href="/songentry/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
+                $btn = '<center><a href="/account_information/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
                 return $btn;
             })->rawColumns(['actions','status'])
 
@@ -240,8 +246,9 @@ class AdminController extends Controller
       return view('admin/NotApproved', compact('entries'));
     }
 
-//APPROVAL OF ENTRIES FUNCTION
-    public function approvalEntries(Request $request, $song_id){
+    //APPROVAL OF ENTRIES FUNCTION
+    public function approvalEntries(Request $request, $song_id)
+    {
 
         $validator = validator::make($request->all(),
             [
@@ -257,7 +264,6 @@ class AdminController extends Controller
         return redirect("manage_admins")->with('success', 'successfully');
 
     }
-
 
     public function createAdmin(Request $request)
     {
@@ -278,5 +284,41 @@ class AdminController extends Controller
         $this->AdminModel->newAdmin($request);
         
         return redirect("manage_admins")->with('success', 'New Admin added successfully!');
+    }
+
+    //For AccountInfo Blade
+    public function indexAccountInformation($user_id)
+    {
+        $songentries = Song::join('users','songs.user_id', '=' , 'users.user_id')
+        ->where('song_id',$user_id)
+        ->get();
+
+        // return $songentries;
+        return view('admin/AccountInfo',compact('songentries'));
+    }
+
+    public function indexCreateGenre()
+    {
+      // return view('admin/CreateGenre');
+
+      $genre = GenreModel::all();
+      return view('admin/ManageGenre')->with('genre', $genre);
+    }
+
+    public function createGenre(Request $request)
+    {
+      $request->validate([
+            'genre',
+            'description'
+        ]);
+
+        // if($validator->fails())
+        // {
+    //  return back()->withErrors($validator)->withInput();
+        // }
+        
+        $this->GenreModel->newGenre($request);
+        
+        return redirect("manage_genre")->with('success', 'New genre added successfully!');
     }
 }

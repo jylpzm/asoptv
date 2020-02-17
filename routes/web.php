@@ -58,7 +58,7 @@ Route::get('/admin_dashboard', 'admin\AdminController@index')->name('AdminDashbo
 Route::get('/manage_admins', 'admin\AdminController@indexManageAdmins')->name('ManageAdmins');
 
 //New Administrator Dashboard
-Route::get('/add_admin', 'admin\AdminController@indexCreateNewAdmin')->name('AddAdministrator');
+// Route::get('/add_admin', 'admin\AdminController@indexCreateNewAdmin')->name('AddAdministrator');
 
 //Create New Administrator
 Route::post('/create_new_admin', 'admin\AdminController@createAdmin')->name('CreateAdministrator');
@@ -67,7 +67,8 @@ Route::post('/create_new_admin', 'admin\AdminController@createAdmin')->name('Cre
 Route::get('/manage_songwriters', 'admin\AdminController@indexManageSongwriters')->name('ManageSongwriters');
 
 //Songwriter Details
-Route::get('/songentry/detail/{song_id}', 'admin\AdminController@songentrydetails')->name('SongwriterDetails');
+// Route::get('/songentry/detail/{song_id}', 'admin\AdminController@songentrydetails')->name('SongwriterDetails');
+Route::get('/account_information/detail/{song_id}', 'admin\AdminController@indexAccountInformation')->name('AccountInformation');
 
 //Manage Song Entries Dashbaord
 Route::get('/manage_song_entries', 'admin\AdminController@indexManageSongEntries')->name('ManageSongEntries');
@@ -78,4 +79,11 @@ Route::get('/nonapproved_entries', 'admin\AdminController@NonapprovedEntries')->
 
 //approval of entries
 Route::post('/approval_entry/{song_id}', 'admin\AdminController@approvalEntries');
+
+//Genre Dashboard
+Route::get('/manage_genre', 'admin\AdminController@indexCreateGenre')->name('ManageGenre');
+
+//Create Genre
+Route::post('/create_genre', 'admin\AdminController@createGenre')->name('CreateGenre');
+
 });

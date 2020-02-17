@@ -117,7 +117,7 @@
                           <td>{{ $row->created_at }}</td>
                           <td>
                             <div class="">
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="">View Details</button>
+                              <button type="button" class="btn btn-primary">View Details</button>
                             </div>
                           </td>
                         </tr>
