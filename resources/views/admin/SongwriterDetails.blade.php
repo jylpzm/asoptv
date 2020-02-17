@@ -23,30 +23,23 @@
               <!-- <div class="card"> -->
                 <div class="card-body">
                   <h1 class="card-title"><strong>Songwriter's Information</strong></h1><br/><br/>
+                   @foreach($songentries as $songentry)
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    @foreach($songentries as $songentry)
-
-                    
                     <label for="firstname">Full Name:</label><br>
                     {{ $songentry->first_name ." ". $songentry->last_name }}
-
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <br><label for="firstname">Gender:</label><br>
-                    <input name="first_name" id="firstname" type="text" class="form-control form-control-user" value="" disabled="">
+                    <br><label for="gender">Gender:</label><br>
+                    {{ $songentry->gender}}
                   </div>
-                    <div>
-                      <b>Gender:</b>
-                    </div>
-                    <div>
-                      <b>Address:</b>
-                    </div>
-                    <div>
-                      <b>Contact No.:</b>
-                    </div>
-                    <div>
-                      <b>Email Address:</b>
-                    </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <br><label for="contact_num">Contact No.:</label><br>
+                    {{ $songentry->contact_num}}
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <br><label for="email">Email Address:</label><br>
+                    {{ $songentry->email}}
+                  </div>
                 </div>
               <!-- </div> -->
             </div>
@@ -55,19 +48,22 @@
               <!-- <div class="card"> -->
                 <div class="card-body">
                   <h1 class="card-title"><strong>Song Entry Information</strong></h1><br/><br/>
-                    <div class="card" style="height: 70px;">
-                      <b>Song Title:</b>
-                    </div>
-                    <div class="card" style="height: 70px;">
-                      <b>Audio File:</b>
-                    </div>
-                    <div class="card" style="height: 70px;">
-                      <b>Lyrics File:</b>
-                    </div>
-                    <div class="card" style="height: 240px;">
-                      <b>Description:</b>
-                    </div>
-                </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="firstname">Song Title:</label><br>
+                    {{ $songentry->song_title}}
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <br><label for="gender">Audio:</label><br>
+                    <audio controls src="/storage/audio/{{ $songentry->audio_file }}"></audio>
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <br><label for="gender">Lyrics:</label><br>
+                    <a href="/storage/lyrics/{{ $songentry->lyrics_file }}">{{ $songentry->song_title }}</a>
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <br><label for="gender">NOTE:</label><br>
+                    <p>{{ $songentry->notes }}</p>
+                  </div>
               <!-- </div> -->
             </div>
             @php

@@ -68,6 +68,7 @@ class RegisterController extends Controller
         return User::create([
 
             'user_id' => IdGenerator::generate(['table' => 'users', 'length' => 8, 'prefix' => 'SW' ]),
+            'role_id' => $data['role_id'],
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'dob' => $data['dob'],

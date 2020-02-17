@@ -28,8 +28,6 @@ class SongsController extends Controller
 		
 		}
 		$this->Song->submittedsong($request);
-
-
 		return redirect("home")->with("message", "SUCCESSFULLY SUBMIT YOUR ENTRY");
 	}
 

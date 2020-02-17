@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Admin\AdminModel;
 use Illuminate\Http\Request;
 use App\User;
 use App\Song;
+use App\Admin\AdminModel;
+use App\PhilippinesRegion;
 use Validator;
 use Auth;
 use DataTables;
@@ -49,7 +50,7 @@ class AdminController extends Controller
 
 //SONG ENTRY DETAILS
     public function songentrydetails($user_id)
-    {
+    { 
         $songentries = Song::join('users','songs.user_id', '=' , 'users.user_id')
         ->where('song_id',$user_id)
         ->get();
@@ -64,33 +65,38 @@ class AdminController extends Controller
         if($request->ajax())
       {
            $entries = Song::join('users', 'users.user_id', '=', 'songs.user_id')
+           ->select('songs.*','users.first_name','users.last_name')
            ->get(); 
             return DataTables::of($entries)
             ->editColumn('first_name', function($entries){
             return $entries->first_name . " " . $entries->last_name;
             })
+            ->editColumn('created_at', function($entries){
+              return date('Y-m-d', strtotime($entries->created_at));
+            })
             ->editColumn('status', function($entries){
               if ($entries->status == 0) 
-                {
-                  return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
-                }
+              {
+                return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
+              }
               else if ($entries->status == 1) {
                 return '<span style="color: blue; font-weight: bold">Processing</span>';
               }
               else if ($entries->status == 2){
                 return '<span style="color: green; font-weight: bold">Approved</span>';
               } else{
-                  return '<span style="color: red; font-weight: bold">Not Approved</span>';
+              return '<span style="color: red; font-weight: bold">Not Approved</span>';
                 }
-              
-      })
+            })
             ->addColumn('action', function($entries){
                 $btn = '<center><a href="/songentry/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
                 return $btn;
-            })->rawColumns(['action','status'])
+            })->rawColumns(['action','status','created_at'])
 
             ->make(true);
+
       }
+
       return view('admin/ManageSongEntries', compact('entries'));
     }
 
@@ -121,8 +127,8 @@ class AdminController extends Controller
                   return '<span style="color: red; font-weight: bold">Not Approved</span>';
                 }
       })
-            ->addColumn('actions', function($row){
-                $btn = '<center><a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View Details</a></center>';
+            ->addColumn('actions', function($entries){
+                $btn = '<center><a href="/songentry/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
                 return $btn;
             })->rawColumns(['actions','status'])
             ->make(true);
@@ -155,8 +161,8 @@ class AdminController extends Controller
                   return '<span style="color: red; font-weight: bold">Not Approved</span>';
                 }
       })
-            ->addColumn('actions', function($row){
-                $btn = '<center><a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View Details</a></center>';
+            ->addColumn('actions', function($entries){
+                $btn = '<center><a href="/songentry/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
                 return $btn;
             })->rawColumns(['actions','status'])
             ->make(true);
@@ -189,8 +195,8 @@ class AdminController extends Controller
                   return '<span style="color: red; font-weight: bold">Not Approved</span>';
                 }
       })
-            ->addColumn('actions', function($row){
-                $btn = '<center><a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View Details</a></center>';
+            ->addColumn('actions', function($entries){
+                $btn = '<center><a href="/songentry/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
                 return $btn;
             })->rawColumns(['actions','status'])
             ->make(true);
@@ -223,8 +229,8 @@ class AdminController extends Controller
                   return '<span style="color: red; font-weight: bold">Not Approved</span>';
                 }
       })
-            ->addColumn('actions', function($row){
-                $btn = '<center><a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View Details</a></center>';
+            ->addColumn('actions', function($entries){
+                $btn = '<center><a href="/songentry/detail/'.$entries->song_id.'" '.'class="edit btn btn-primary btn-sm">View Details</a></center>';
                 return $btn;
             })->rawColumns(['actions','status'])
 
