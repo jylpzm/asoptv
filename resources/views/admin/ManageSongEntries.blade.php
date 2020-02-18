@@ -18,32 +18,35 @@
     <!-- /.content-header -->
                   <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Song Entries</h6>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="table" width="100%" cellspacing="0">
+                <table class="table table-striped" id="table" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>No.</th>
+                        <th>No.</th>
                         <th>Songwriter</th>
                         <th>Song Title</th>
                         <th>Genre</th>
-                        <th>Submission Date</th>
+                        <th>Submission(Year)</th>
+                        <th>Submission(Month)</th>
+                        <th>Submission(Day)</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
-                  </thead>
-                   <tfoot>
-                      <tr>
-                          <th>No.</th>
+                    <tfoot>
+                        <th>No.</th>
                         <th>Songwriter</th>
                         <th>Song Title</th>
                         <th>Genre</th>
-                        <th>Submission Date</th>
-                      </tr>
-                  </tfoot>
+                        <th>Submission(Year)</th>
+                        <th>Submission(Month)</th>
+                        <th>Submission(Day)</th>
+                    </tfoot>
+                  </thead>
                 </table>
               </div>
             </div>
@@ -53,7 +56,8 @@
       </div><!-- /.container-fluid -->
 
 @endsection
-<script src="{{ asset("/vendor/jquery/jquery.min.js") }}"></script>
+<script src="{{ asset("/vendor/jquery/jquery.min.js") }}">
+</script>
 <script>
          $(function() {
                $('#table').DataTable({
@@ -65,7 +69,9 @@
                         { data: 'first_name', name: 'first_name'},
                         { data: 'song_title', name: 'song_title' },
                         { data: 'song_genre', name: 'song_genre' },
-                        { data: 'created_at', name: 'created_at' },
+                        { data: 'created_year', name: 'created_year' },
+                        { data: 'created_month', name: 'created_month' },
+                        { data: 'created_day', name: 'created_day' },
                         { data: 'status', name: 'status' },
                         { data: 'action', name: 'action', orderable: false, searchable: false  },
                      ],

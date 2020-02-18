@@ -15,6 +15,7 @@
 }
 
 </style>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
             @foreach($errors->all() as $error)
             <div class="alert alert-danger col-md-6 offset-md-3" role="alert">
               {{ $error }}
@@ -42,7 +43,7 @@
           <hr>
           <div class="form-group mt-3">
             <label><strong>Upload Song</strong></label>
-            <input type="file" name="audio_file" accept=".mp3" id="audio_file">>
+            <input type="file" name="audio_file" accept=".mp3" id="audio_file">
             <p class="text-danger">**Only .MP3 file format is accepted.</p>
           </div>
           <hr>

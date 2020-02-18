@@ -50,7 +50,7 @@ Route::post('captcha', 'CaptchaController@captchaValidate');
 Route::get('refreshcaptcha', 'SongsController@refreshCaptcha');
 
 //**** ADMIN SDE ****//
-//
+Route::get('/admin/asoptv2020/login', 'admin\AdminController@login');
 //Admin Dashboard
 Route::get('/admin_dashboard', 'admin\AdminController@index')->name('AdminDashboard');
 

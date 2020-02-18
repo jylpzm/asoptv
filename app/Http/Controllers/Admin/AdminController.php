@@ -69,10 +69,16 @@ class AdminController extends Controller
            ->get(); 
             return DataTables::of($entries)
             ->editColumn('first_name', function($entries){
-            return $entries->first_name . " " . $entries->last_name;
+            return ucfirst($entries->first_name) . " " . ucfirst($entries->last_name);
             })
-            ->editColumn('created_at', function($entries){
-              return date('Y-m-d', strtotime($entries->created_at));
+            ->editColumn('created_year', function($entries){
+              return date('Y');
+            })
+            ->editColumn('created_month', function($entries){
+              return date('M');
+            })
+            ->editColumn('created_day', function($entries){
+              return date('d');
             })
             ->editColumn('status', function($entries){
               if ($entries->status == 0) 
@@ -84,8 +90,9 @@ class AdminController extends Controller
               }
               else if ($entries->status == 2){
                 return '<span style="color: green; font-weight: bold">Approved</span>';
-              } else{
-              return '<span style="color: red; font-weight: bold">Not Approved</span>';
+              } 
+              else{
+                return '<span style="color: red; font-weight: bold">Not Approved</span>';
                 }
             })
             ->addColumn('action', function($entries){
@@ -116,15 +123,16 @@ class AdminController extends Controller
             ->editColumn('status', function($entries){
               if ($entries->status == 0) 
                 {
-                  return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
+                return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
                 }
               else if ($entries->status == 1) {
                 return '<span style="color: blue; font-weight: bold">Processing</span>';
               }
               else if ($entries->status == 2){
                 return '<span style="color: green; font-weight: bold">Approved</span>';
-              } else{
-                  return '<span style="color: red; font-weight: bold">Not Approved</span>';
+              } 
+              else{
+                return '<span style="color: red; font-weight: bold">Not Approved</span>';
                 }
       })
             ->addColumn('actions', function($entries){
@@ -150,15 +158,16 @@ class AdminController extends Controller
             ->editColumn('status', function($entries){
               if ($entries->status == 0) 
                 {
-                  return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
+                return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
                 }
               else if ($entries->status == 1) {
                 return '<span style="color: blue; font-weight: bold">Processing</span>';
               }
               else if ($entries->status == 2){
                 return '<span style="color: green; font-weight: bold">Approved</span>';
-              } else{
-                  return '<span style="color: red; font-weight: bold">Not Approved</span>';
+              } 
+              else{
+                return '<span style="color: red; font-weight: bold">Not Approved</span>';
                 }
       })
             ->addColumn('actions', function($entries){
@@ -184,15 +193,16 @@ class AdminController extends Controller
             ->editColumn('status', function($entries){
               if ($entries->status == 0) 
                 {
-                  return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
+                return '<span style="color: gray; font-weight: bold">Waiting For Approval</span>';
                 }
               else if ($entries->status == 1) {
                 return '<span style="color: blue; font-weight: bold">Processing</span>';
               }
               else if ($entries->status == 2){
                 return '<span style="color: green; font-weight: bold">Approved</span>';
-              } else{
-                  return '<span style="color: red; font-weight: bold">Not Approved</span>';
+              } 
+              else{
+                return '<span style="color: red; font-weight: bold">Not Approved</span>';
                 }
       })
             ->addColumn('actions', function($entries){
@@ -225,8 +235,9 @@ class AdminController extends Controller
               }
               else if ($entries->status == 2){
                 return '<span style="color: green; font-weight: bold">Approved</span>';
-              } else{
-                  return '<span style="color: red; font-weight: bold">Not Approved</span>';
+              } 
+              else{
+                return '<span style="color: red; font-weight: bold">Not Approved</span>';
                 }
       })
             ->addColumn('actions', function($entries){
@@ -278,5 +289,9 @@ class AdminController extends Controller
         $this->AdminModel->newAdmin($request);
         
         return redirect("manage_admins")->with('success', 'New Admin added successfully!');
+    }
+
+    public function login(){
+      return view('admin/admin_auth/admin_login');
     }
 }

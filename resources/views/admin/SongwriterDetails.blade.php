@@ -54,7 +54,12 @@
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <br><label for="gender">Audio:</label><br>
-                    <audio controls src="/storage/audio/{{ $songentry->audio_file }}"></audio>
+                    <audio controls src="/storage/audio/{{ $songentry->audio_file }}" preload="metadata"></audio>
+                    <audio id="myAudio" controls>
+  <source src="horse.ogg" type="audio/ogg">
+  <source src="/storage/audio/{{ $songentry->audio_file }}" controls="controls" preload="metadata">
+  Your browser does not support the audio element.
+</audio>
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <br><label for="gender">Lyrics:</label><br>
