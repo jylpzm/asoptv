@@ -1,4 +1,3 @@
-
 @extends('admin/admin_layouts.admin_app')
 
 @section('content')
