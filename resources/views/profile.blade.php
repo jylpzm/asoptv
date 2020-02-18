@@ -66,11 +66,11 @@
                   <input type="text" name="user_id" value="{{ Auth::user()->user_id }}" hidden="">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="firstname">First Name</label><br>
-                    <input name="first_name" id="firstname" type="text" class="form-control form-control-   user" value="{{ Auth::user()->first_name }}" disabled="">
+                    <input name="first_name" id="firstname" type="text" class="form-control form-control-   user" value="{{ ucfirst(Auth::user()->first_name) }}" disabled="">
                   </div>
                   <div class="col-sm-6">
                     <label for="lastname">Last Name</label><br>
-                    <input name="last_name" id="lastname" type="text" class="form-control form-control-user" value="{{ Auth::user()->last_name }}" disabled="">
+                    <input name="last_name" id="lastname" type="text" class="form-control form-control-user" value="{{ ucfirst(Auth::user()->last_name) }}" disabled="">
                   </div>
                 </div>
 
@@ -101,7 +101,7 @@
                 </div>
                 <div class="form-group">
                   <label for="street">Street Address</label><br>
-                    <input name="street_add" id="streetadd" type="text" class="form-control form-control-user"  placeholder="Put Your Complete Address here" disabled="" value="{{ Auth::user()->street_add }}">
+                    <input name="street_add" id="streetadd" type="text" class="form-control form-control-user"  placeholder="Put Your Complete Address here" disabled="" value="{{ ucfirst(Auth::user()->street_add) }}">
                 </div>
                 <div>
                    @foreach($phregions as $phregion)

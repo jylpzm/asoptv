@@ -53,7 +53,7 @@ class ProfilesController extends Controller
     public function changeprofile(Request $request){
 
            $validator = validator::make($request->all(),[
-            'contact_num' => 'required|min:10|max:20',
+            'contact_num' => 'required|min:10|max:20|numeric',
         ]);
 
             if($validator->fails()){
